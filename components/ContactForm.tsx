@@ -72,7 +72,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="Aung Aung"
+          placeholder="your name"
         />
         {errors.name && <p className="mt-1 font-mono text-xs text-lacquer">{errors.name}</p>}
       </div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="you@business.com"
+          placeholder="your email"
         />
         {errors.email && <p className="mt-1 font-mono text-xs text-lacquer">{errors.email}</p>}
       </div>
