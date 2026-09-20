@@ -1,20 +1,22 @@
-﻿import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        ink: "#0B1220",
-        navy: "#101B33",
-        cyan: "#19D3E6",
-        gold: "#E0B04B",
-        paper: "#F7FAFC",
-        mist: "#CBD5E1",
-        slate: "#64748B",
-        lacquer: "#B23A22",
+        ink: "#0B1220", // Deep Navy — primary dark background, mark, navigation
+        navy: "#101B33", // Navy — surfaces, panels, secondary backgrounds
+        cyan: "#19D3E6", // Electric Cyan — primary functional accent
+        gold: "#E0B04B", // Warm Gold — craft / fingerprint highlight only
+        paper: "#F7FAFC", // White — primary text on dark surfaces
+        mist: "#CBD5E1", // Mist — secondary text on dark surfaces
+        slate: "#64748B", // Slate — muted text / metadata
+        lacquer: "#B23A22", // Heritage accent — sparing, cultural context only
       },
       fontFamily: {
+        // "General Sans" / "Satoshi" come from Fontshare's own @font-face
+        // rules (linked in app/layout.tsx), not a next/font CSS variable.
         display: ["General Sans", "sans-serif"],
         body: ["Satoshi", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],

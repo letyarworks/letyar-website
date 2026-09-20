@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
 
 export const metadata = { title: "Log in — Letyar" };
@@ -48,10 +48,14 @@ export default function LoginPage() {
       </form>
 
       <p className="mt-6 font-body text-sm text-mist">
-        Do not have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/signup" className="text-cyan hover:text-paper">
           Sign up
         </Link>
+      </p>
+
+      <p className="mt-10 font-mono text-[11px] text-slate">
+        Not wired to real authentication yet — see README &ldquo;Adding auth&rdquo;.
       </p>
     </section>
   );

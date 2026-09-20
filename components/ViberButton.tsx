@@ -1,7 +1,7 @@
-﻿export default function ViberButton() {
+export default function ViberButton() {
   return (
     <a
-      href="viber://chat?number=%2B959669966124"
+      href="viber://chat?number=%2B959000000000"
       aria-label="Chat with Letyar on Viber"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 animate-pulseRing items-center justify-center rounded-full bg-cyan text-ink shadow-lg transition hover:scale-105"
     >

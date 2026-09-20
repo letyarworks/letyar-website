@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -17,6 +17,9 @@ body {
   outline-offset: 2px;
 }
 
+/* Ridge-line watermark: the Yun Ridge mark, repeated as a faint structural
+   motif rather than a decorative gradient — keeps to the brand rule of
+   solid backgrounds while still carrying the identity through the page. */
 .ridge-watermark {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%2319D3E6' stroke-opacity='0.06' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M18 16 V48 A34 34 0 0 0 52 82 H82'/%3E%3Cpath d='M30 16 V48 A22 22 0 0 0 52 70 H82'/%3E%3Cpath d='M42 16 V48 A10 10 0 0 0 52 58 H82'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -24,6 +27,9 @@ body {
   background-size: 620px 620px;
 }
 
+/* Used together with the SVG attribute pathLength={1} on the target path,
+   so stroke-dasharray of 1 always maps to "the whole path" regardless of
+   its real length. */
 .dashline {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;

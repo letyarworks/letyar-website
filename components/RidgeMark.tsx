@@ -1,4 +1,4 @@
-﻿export default function RidgeMark({
+export default function RidgeMark({
   size = 32,
   animated = false,
   className = "",
@@ -37,6 +37,7 @@
           style={animated ? { animationDelay: "0.46s" } : undefined}
         />
       </g>
+      {/* the fingerprint dot — Warm Gold, the maker's signature */}
       <circle
         cx="52"
         cy="48"

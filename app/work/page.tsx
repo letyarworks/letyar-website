@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { work } from "@/lib/content";
 import WorkPreview from "@/components/WorkPreview";
 

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { tiers } from "@/lib/content";
 
 export const metadata = { title: "Pricing — Letyar" };
@@ -8,7 +8,7 @@ const compareRows = [
   { label: "CMS or admin panel", values: ["—", "Included", "Included"] },
   { label: "Automation workflow", values: ["—", "1 included", "Scoped per project"] },
   { label: "Design system", values: ["—", "—", "Included"] },
-  { label: "Turnaround", values: ["2 weeks", "3-4 weeks", "Scoped per project"] },
+  { label: "Turnaround", values: ["2 weeks", "3–4 weeks", "Scoped per project"] },
   { label: "Support after launch", values: ["Email, 30 days", "Email, 60 days", "Ongoing option"] },
 ];
 
@@ -46,7 +46,7 @@ export default function PricingPage() {
             <ul className="mt-6 flex-1 space-y-2.5">
               {t.features.map((f) => (
                 <li key={f} className="flex gap-2 font-body text-sm text-mist">
-                  <span className="text-gold">+</span>
+                  <span className="text-gold">＋</span>
                   {f}
                 </li>
               ))}
@@ -65,6 +65,7 @@ export default function PricingPage() {
         ))}
       </div>
 
+      {/* COMPARISON TABLE */}
       <div className="mt-20 overflow-x-auto">
         <h2 className="font-display text-xl font-semibold text-paper">Compare tiers</h2>
         <table className="mt-6 w-full min-w-[560px] border-collapse font-body text-sm">
@@ -91,12 +92,13 @@ export default function PricingPage() {
         </table>
       </div>
 
+      {/* FAQ */}
       <div className="mt-20 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2">
         <div>
-          <p className="font-body text-sm font-medium text-paper">What if my project does not fit a tier?</p>
+          <p className="font-body text-sm font-medium text-paper">What if my project doesn't fit a tier?</p>
           <p className="mt-1 font-body text-sm text-mist">
             Most Product-tier work is scoped individually. Book a scope call
-            and we will send a fixed price before anything starts.
+            and we'll send a fixed price before anything starts.
           </p>
         </div>
         <div>
@@ -125,7 +127,7 @@ export default function PricingPage() {
       <div className="mt-16 flex flex-col items-start justify-between gap-4 border border-white/10 bg-navy p-8 md:flex-row md:items-center">
         <div>
           <h2 className="font-display text-lg font-semibold text-paper">Not sure which tier fits?</h2>
-          <p className="mt-1 font-body text-sm text-mist">Tell us what you are building — we will recommend one.</p>
+          <p className="mt-1 font-body text-sm text-mist">Tell us what you're building — we'll recommend one.</p>
         </div>
         <Link
           href="/contact"

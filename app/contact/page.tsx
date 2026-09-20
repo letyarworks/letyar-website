@@ -1,4 +1,4 @@
-﻿import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/ContactForm";
 import { socials } from "@/lib/content";
 
 export const metadata = { title: "Contact — Letyar" };
@@ -10,11 +10,11 @@ export default function ContactPage() {
         <div className="lg:col-span-2">
           <p className="font-mono text-xs uppercase tracking-widest text-slate">Get in touch</p>
           <h1 className="mt-2 font-display text-3xl font-semibold text-paper md:text-4xl">
-            Tell us what you are building
+            Tell us what you're building
           </h1>
           <p className="mt-4 font-body text-sm text-mist">
             Scope calls are free. Send a few lines about the project and
-            we will follow up with questions and a price.
+            we'll follow up with questions and a price.
           </p>
 
           <div className="mt-10 space-y-6">

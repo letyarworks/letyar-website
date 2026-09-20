@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import RidgeMark from "./RidgeMark";
 import { socials } from "@/lib/content";
 

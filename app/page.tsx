@@ -1,10 +1,11 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
 import { services, tiers, partners, testimonials } from "@/lib/content";
 
 export default function Home() {
   return (
     <>
+      {/* HERO */}
       <section className="relative overflow-hidden ridge-watermark">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
           <div className="flex items-center gap-3">
@@ -41,6 +42,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* PARTNERS MARQUEE — placeholder wordmarks, swap for real logos */}
         <div className="border-t border-white/5 bg-navy/60 py-6">
           <p className="mx-auto max-w-6xl px-6 font-mono text-[11px] uppercase tracking-widest text-slate">
             Trusted by teams building in Myanmar and beyond
@@ -57,6 +59,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SERVICES */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <p className="font-mono text-xs uppercase tracking-widest text-slate">What we build</p>
         <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
@@ -84,6 +87,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TEMPLATES TEASER */}
       <section className="border-y border-white/5 bg-navy/40">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-16 md:flex-row md:items-center">
           <div>
@@ -102,6 +106,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROCESS */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <p className="font-mono text-xs uppercase tracking-widest text-slate">Process</p>
         <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
@@ -121,6 +126,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PRICING PREVIEW */}
       <section className="border-y border-white/5 bg-navy/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="flex items-end justify-between">
@@ -160,6 +166,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <p className="font-mono text-xs uppercase tracking-widest text-slate">From past projects</p>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -172,6 +179,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="flex flex-col items-start justify-between gap-6 border border-white/10 bg-navy p-10 md:flex-row md:items-center">
           <div>
@@ -179,7 +187,7 @@ export default function Home() {
               Have a build in mind?
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Tell us what you are building. We will reply with a scope and a price.
+              Tell us what you're building. We'll reply with a scope and a price.
             </p>
           </div>
           <Link

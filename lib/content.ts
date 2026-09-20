@@ -1,4 +1,4 @@
-﻿export const services = [
+export const services = [
   {
     key: "web",
     title: "Web",
@@ -52,7 +52,7 @@ export const tiers: Tier[] = [
       "CMS or admin panel",
       "Analytics & SEO setup",
       "1 automation workflow included",
-      "3-4 weeks turnaround",
+      "3–4 weeks turnaround",
     ],
     highlighted: true,
   },

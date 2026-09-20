@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 
@@ -25,13 +25,15 @@ export default function ContactForm() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (status === "submitting") return;
     const form = e.currentTarget;
     const next = validate(form);
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
     setStatus("submitting");
+    // No backend is wired up yet — this simulates a send so the flow can be
+    // reviewed end-to-end. Replace with a real POST to your API route or
+    // form service (see README "Wiring the contact form").
     window.setTimeout(() => {
       setStatus("sent");
       form.reset();
@@ -48,7 +50,7 @@ export default function ContactForm() {
         </span>
         <h3 className="font-display text-lg font-semibold text-paper">Message sent.</h3>
         <p className="font-body text-sm text-mist">
-          We will reply within one business day with next steps.
+          We'll reply within one business day with next steps.
         </p>
         <button
           type="button"
@@ -72,7 +74,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="your name"
+          placeholder="Aung Aung"
         />
         {errors.name && <p className="mt-1 font-mono text-xs text-lacquer">{errors.name}</p>}
       </div>
@@ -86,7 +88,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="your email"
+          placeholder="you@business.com"
         />
         {errors.email && <p className="mt-1 font-mono text-xs text-lacquer">{errors.email}</p>}
       </div>
@@ -128,7 +130,7 @@ export default function ContactForm() {
         disabled={status === "submitting"}
         className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending..." : "Send message"}
+        {status === "submitting" ? "Sending…" : "Send message"}
       </button>
     </form>
   );

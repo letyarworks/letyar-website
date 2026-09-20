@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { JetBrains_Mono, Noto_Sans_Myanmar } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -12,7 +12,7 @@ const mono = JetBrains_Mono({
 });
 
 const myanmar = Noto_Sans_Myanmar({
-  subsets: ["myanmar"],
+  subsets: ["latin"],
   variable: "--font-mm",
   weight: ["400", "600"],
 });
@@ -30,6 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${mono.variable} ${myanmar.variable}`}>
+      {/* General Sans + Satoshi are Fontshare-exclusive faces named in
+          TYPOGRAPHY.md — loaded here since next/font/google doesn't carry them.
+          If Fontshare is unreachable in your environment, self-host the two
+          families instead (see README "Fonts"). */}
       <link
         rel="stylesheet"
         href="https://api.fontshare.com/v2/css?f[]=general-sans@600&f[]=satoshi@400,500&display=swap"

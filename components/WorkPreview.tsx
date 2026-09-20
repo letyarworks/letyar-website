@@ -1,4 +1,4 @@
-﻿import { WorkItem } from "@/lib/content";
+import { WorkItem } from "@/lib/content";
 
 function layoutFor(category: WorkItem["category"]) {
   switch (category) {

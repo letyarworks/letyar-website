@@ -1,4 +1,4 @@
-﻿export const metadata = { title: "About — Letyar" };
+export const metadata = { title: "About — Letyar" };
 
 export default function AboutPage() {
   return (
@@ -9,8 +9,8 @@ export default function AboutPage() {
       </h1>
       <p className="mt-6 font-body text-base leading-relaxed text-mist">
         Letyar (လက်ရာ) is a Myanmar word for workmanship — the distinctive
-        mark a craftsperson leaves on something they built by hand. That is
-        the standard this studio holds its work to, whether it is a five-page
+        mark a craftsperson leaves on something they built by hand. That's
+        the standard this studio holds its work to, whether it's a five-page
         site or a full product build.
       </p>
       <p className="mt-4 font-body text-base leading-relaxed text-mist">
@@ -20,9 +20,24 @@ export default function AboutPage() {
         pick up and maintain.
       </p>
 
+      <div className="mt-14 flex items-center gap-5 border-t border-white/10 pt-10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/avatar-cream.svg"
+          alt="Letyar founder avatar mark"
+          width={64}
+          height={64}
+          className="rounded-full"
+        />
+        <div>
+          <p className="font-display text-base font-semibold text-paper">Aung</p>
+          <p className="font-mono text-xs text-slate">Founder, Letyar Labs — Yangon, Myanmar</p>
+        </div>
+      </div>
+
       <div className="mt-14 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 sm:grid-cols-3">
         {[
-          { title: "Clear", body: "No jargon, no padded scope. What is being built is written down before it starts." },
+          { title: "Clear", body: "No jargon, no padded scope. What's being built is written down before it starts." },
           { title: "Practical", body: "Solutions fit the resources at hand — lightweight, mobile-friendly, maintainable." },
           { title: "Shipped", body: "A finished, live build beats a polished plan that never launches." },
         ].map((v) => (
