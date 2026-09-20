@@ -62,7 +62,7 @@ git init
 git add .
 git commit -m "Initial commit: Letyar Labs website"
 git branch -M main
-git remote add origin https://github.com/<your-username>/letyar-website.git
+git remote add origin https://github.com/letyarworks/letyar-website.git
 git push -u origin main
 ```
 
@@ -77,7 +77,7 @@ Every push to `main` redeploys automatically.
 ## Next steps (not wired up yet)
 
 - **Viber button** (`components/ViberButton.tsx`) links to a placeholder
-  number — swap `%2B959000000000` for the real one.
+  number — real number (`+959669966124`) is already set.
 - **Contact form** (`components/ContactForm.tsx`) simulates a send. Wire it
   to a real endpoint — an `app/api/contact/route.ts` that emails you, or a
   service like Formspree/Resend.
@@ -98,3 +98,51 @@ Every push to `main` redeploys automatically.
 - `tailwind.config.ts` — the eight brand color tokens, straight from `COLORS.md`
 - `app/pricing/page.tsx` — full tiers + comparison table
 - `app/contact/page.tsx` + `components/ContactForm.tsx` — the contact flow
+
+## Template marketplace (new)
+
+A full "browse → select → sign up → customize → publish & pay" flow, built
+as a real click-through even though nothing is wired to a backend yet:
+
+1. **`/templates`** and the homepage marquee — 5 templates, each a 9:16
+   portrait placeholder card. Add more any time by adding an entry to the
+   `templates` array in `lib/content.ts`; every page reads from that one
+   array, so nothing else needs to change.
+2. **`/templates/[slug]`** — template detail, "Select this template" links
+   to `/signup?template=<slug>`.
+3. **`/signup`** — shows the selected template, then (on submit) routes to
+   `/dashboard?template=<slug>`. Account creation is simulated — see
+   "Adding auth" below.
+4. **`/dashboard`** — a two-step mock: **Customize** (site name, tagline,
+   accent color, live-ish preview) → **Publish**, which asks for a payment
+   method (KBZPay, Wave Pay, KBZ Bank) and simulates a paid, published site.
+
+### Wiring payments (KBZPay / Wave Pay / KBZ Bank)
+
+`components/DashboardClient.tsx`'s `handlePublish()` currently just waits
+1.1s and shows success — there's no real payment call. To take real money:
+
+- Each provider (KBZPay, Wave Pay, KBZ) requires its own merchant
+  account and API credentials — apply directly with each provider.
+- Payment confirmation has to happen **server-side**: create an
+  `app/api/publish/route.ts` that creates a payment request with the
+  provider's API, and a webhook endpoint that provider calls back to
+  confirm payment before you mark a site as published. Never trust a
+  "payment succeeded" signal from the browser alone.
+- Store the published site's data (owner, template, customizations,
+  payment status) in a real database once this is wired up — right now
+  nothing persists past a page refresh.
+
+### Adding auth
+
+`/login` and `/signup` are UI only — no session is created. Clerk or
+NextAuth.js both work well with the App Router; once wired, replace the
+`window.setTimeout` fake-submit in `components/SignupForm.tsx` with a real
+sign-up call, and protect `/dashboard` so it requires a session.
+
+## Viber button
+
+`components/ViberButton.tsx` now uses the real Viber glyph (not a rough
+approximation) on Viber's own brand purple (`#7360F2`), with an entrance
+animation on page load plus a soft pulse ring. Swap the placeholder number
+in the `href` (`viber://chat?number=...`) for the real one.

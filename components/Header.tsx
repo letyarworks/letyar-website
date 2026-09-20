@@ -2,6 +2,7 @@ import Link from "next/link";
 import RidgeMark from "./RidgeMark";
 
 const links = [
+  { href: "/templates", label: "Templates" },
   { href: "/work", label: "Work" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },

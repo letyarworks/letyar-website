@@ -27,9 +27,25 @@ body {
   background-size: 620px 620px;
 }
 
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseRingViber {
+  0% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0.55); }
+  70% { box-shadow: 0 0 0 16px rgba(115, 96, 242, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0); }
+}
+
 /* Used together with the SVG attribute pathLength={1} on the target path,
    so stroke-dasharray of 1 always maps to "the whole path" regardless of
    its real length. */
+@keyframes marqueeLTR {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
 .dashline {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;

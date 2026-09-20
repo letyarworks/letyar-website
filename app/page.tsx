@@ -1,6 +1,7 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
-import { services, tiers, partners, testimonials } from "@/lib/content";
+import TemplateCard9x16 from "@/components/TemplateCard9x16";
+import { services, tiers, partners, testimonials, templates } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -16,7 +17,26 @@ export default function Home() {
           </div>
           <h1 className="mt-7 max-w-2xl font-display text-4xl font-semibold leading-[1.1] text-paper md:text-6xl">
             Every build carries
-            <br />a fingerprint.
+            <br />
+            <span className="relative inline-block">
+              a fingerprint.
+              <svg
+                viewBox="0 0 220 14"
+                className="absolute -bottom-2 left-0 h-3 w-full text-gold"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8 Q 55 -2 110 6 T 218 5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  pathLength={1}
+                  className="dashline"
+                  style={{ animationDelay: "0.9s" }}
+                />
+              </svg>
+            </span>
           </h1>
           <p className="mt-3 font-mm text-base text-mist/80 md:text-lg">
             ကိုယ်ပိုင်လက်ရာနဲ့ တည်ဆောက်ပါတယ်။
@@ -87,23 +107,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TEMPLATES TEASER */}
-      <section className="border-y border-white/5 bg-navy/40">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-16 md:flex-row md:items-center">
+      {/* TEMPLATES */}
+      <section className="border-y border-white/5 bg-navy/40 py-20">
+        <div className="mx-auto flex max-w-6xl items-end justify-between px-6">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-slate">Coming soon</p>
-            <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
+            <p className="font-mono text-xs uppercase tracking-widest text-slate">Ready-made</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
               Templates for your business
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Ready-made site templates from the same studio, for teams that
-              want to launch without a custom build.
+              Pick a template, sign up, customize it in your dashboard, then
+              publish — paid instantly with KBZPay, Wave Pay or KBZ Bank.
             </p>
           </div>
-          <span className="whitespace-nowrap rounded-sm border border-white/15 px-5 py-2.5 font-mono text-xs text-mist">
-            Notify me — coming soon
-          </span>
+          <Link href="/templates" className="hidden shrink-0 font-mono text-sm text-cyan hover:text-paper md:block">
+            View all →
+          </Link>
         </div>
+
+        <div className="relative mt-10 overflow-hidden">
+          <div className="flex w-max animate-[marqueeLTR_34s_linear_infinite] gap-5 px-6 hover:[animation-play-state:paused]">
+            {[...templates, ...templates].map((t, i) => (
+              <Link key={`${t.slug}-${i}`} href={`/templates/${t.slug}`} className="group">
+                <TemplateCard9x16 t={t} />
+              </Link>
+            ))}
+          </div>
+          {/* edge fade so cards don't hard-cut at the viewport edge */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-navy to-transparent md:w-16" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-navy to-transparent md:w-16" />
+        </div>
+
+        <Link
+          href="/templates"
+          className="mx-6 mt-6 inline-block font-mono text-sm text-cyan hover:text-paper md:hidden"
+        >
+          View all →
+        </Link>
       </section>
 
       {/* PROCESS */}

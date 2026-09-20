@@ -48,8 +48,10 @@ export default function WorkPage({
 
       <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((w) => (
-          <div key={w.slug}>
-            <WorkPreview item={w} />
+          <div key={w.slug} className="group">
+            <div className="transition duration-300 group-hover:-translate-y-1">
+              <WorkPreview item={w} />
+            </div>
             <h3 className="mt-3 font-display text-base font-semibold text-paper">{w.title}</h3>
             <p className="mt-1 font-body text-sm text-mist">{w.summary}</p>
           </div>

@@ -1,9 +1,18 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
+import SignupForm from "@/components/SignupForm";
+import TemplateCard9x16 from "@/components/TemplateCard9x16";
+import { getTemplate } from "@/lib/content";
 
 export const metadata = { title: "Sign up — Letyar" };
 
-export default function SignupPage() {
+export default function SignupPage({
+  searchParams,
+}: {
+  searchParams: { template?: string };
+}) {
+  const template = searchParams.template ? getTemplate(searchParams.template) : undefined;
+
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-16">
       <Link href="/" className="mb-8 flex items-center gap-2.5">
@@ -13,50 +22,20 @@ export default function SignupPage() {
 
       <h1 className="font-display text-2xl font-semibold text-paper">Create an account</h1>
       <p className="mt-2 font-body text-sm text-mist">
-        For clients tracking an active project with Letyar.
+        For clients tracking an active project, or building with a template.
       </p>
 
-      <form className="mt-8 space-y-5">
-        <div>
-          <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-slate">
-            Full name
-          </label>
-          <input
-            id="name"
-            type="text"
-            className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-            placeholder="Aung Aung"
-          />
+      {template && (
+        <div className="mt-6 flex items-center gap-4 border border-cyan/30 bg-navy p-4">
+          <TemplateCard9x16 t={template} className="w-16" />
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-wider text-slate">Selected template</p>
+            <p className="font-display text-sm font-semibold text-paper">{template.title}</p>
+          </div>
         </div>
-        <div>
-          <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-            placeholder="you@business.com"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-slate">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-            placeholder="At least 8 characters"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper"
-        >
-          Create account
-        </button>
-      </form>
+      )}
+
+      <SignupForm template={template?.slug} />
 
       <p className="mt-6 font-body text-sm text-mist">
         Already have an account?{" "}

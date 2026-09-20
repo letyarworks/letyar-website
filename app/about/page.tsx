@@ -32,6 +32,14 @@ export default function AboutPage() {
         <div>
           <p className="font-display text-base font-semibold text-paper">Aung</p>
           <p className="font-mono text-xs text-slate">Founder, Letyar Labs — Yangon, Myanmar</p>
+          <a
+            href="https://aungbobokyaw.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-block font-mono text-xs text-cyan hover:text-paper"
+          >
+            aungbobokyaw.com ↗
+          </a>
         </div>
       </div>
 

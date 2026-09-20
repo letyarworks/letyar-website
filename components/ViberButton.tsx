@@ -1,12 +1,20 @@
 export default function ViberButton() {
   return (
     <a
-      href="viber://chat?number=%2B959000000000"
+      href="viber://chat?number=%2B959669966124"
       aria-label="Chat with Letyar on Viber"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 animate-pulseRing items-center justify-center rounded-full bg-cyan text-ink shadow-lg transition hover:scale-105"
+      className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 animate-[riseIn_0.6s_cubic-bezier(0.16,1,0.3,1)_1.2s_both,pulseRingViber_2.6s_ease-out_infinite_1.8s] items-center justify-center rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
+      style={{ backgroundColor: "#7360F2" }}
     >
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12.02 2C6.9 2 2.6 5.94 2.6 10.86c0 2.05.76 3.9 2.02 5.4-.14 1.09-.55 2.42-1.1 3.55-.13.27.1.55.4.48 1.32-.32 2.7-.86 3.6-1.32.83.24 1.72.37 2.6.37 5.12 0 9.42-3.94 9.42-8.86C19.44 5.94 15.14 2 12.02 2Zm4.53 12.53c-.2.55-1.1 1.06-1.53 1.1-.4.05-.85.07-1.36-.09-.31-.1-.72-.23-1.24-.45-2.19-.94-3.62-3.13-3.73-3.28-.11-.15-.9-1.19-.9-2.28 0-1.08.57-1.61.77-1.83.2-.22.44-.27.59-.27h.42c.14 0 .32-.02.5.38.2.44.66 1.53.72 1.64.06.11.1.24.02.39-.08.15-.12.24-.24.37-.12.13-.25.29-.35.39-.12.11-.25.24-.11.48.14.24.63 1.04 1.36 1.68.94.83 1.72 1.08 1.97 1.2.25.12.4.1.55-.06.15-.16.63-.73.8-.99.17-.25.34-.21.56-.13.23.09 1.44.68 1.68.8.25.13.41.19.47.29.06.11.06.6-.14 1.16Z" />
+      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-sm bg-ink px-2.5 py-1.5 font-mono text-xs text-paper opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100">
+        Chat on Viber
+      </span>
+      {/* Official Viber glyph, viewBox 0 0 48 48 */}
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <path
+          fill="#F7FAFC"
+          d="M9 4.5a1.88 1.88 0 00-1.92 1.88v30.07A1.88 1.88 0 009 38.33h1.88v5.17l10.34-5.17H39a1.88 1.88 0 001.88-1.88V6.38A1.88 1.88 0 0039 4.5Zm4.7 6.58h5.6a1 1 0 01.94.94 10.06 10.06 0 00.63 3.76 1.85 1.85 0 01-.63 2.35l-2 2a17.94 17.94 0 003.38 4.6 18.94 18.94 0 004.61 3.39l2-2a1.85 1.85 0 012.35-.63 10.06 10.06 0 003.76.63 1 1 0 01.94.94v5.64a1 1 0 01-.94.94A22.53 22.53 0 0112.72 12a1 1 0 01.94-.92Z"
+        />
       </svg>
     </a>
   );
