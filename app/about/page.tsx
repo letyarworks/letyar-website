@@ -1,4 +1,7 @@
-export const metadata = { title: "About — Letyar" };
+export const metadata = {
+  title: "About",
+  description: "About Letyar Labs, a web, software and digital product studio based in Yangon, Myanmar.",
+};
 
 export default function AboutPage() {
   return (
