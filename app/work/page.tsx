@@ -2,7 +2,10 @@ import Link from "next/link";
 import { work } from "@/lib/content";
 import WorkPreview from "@/components/WorkPreview";
 
-export const metadata = { title: "Work — Letyar" };
+export const metadata = {
+  title: "Work",
+  description: "Selected Letyar Labs builds across web, software and digital products.",
+};
 
 export default function WorkPage({
   searchParams,
