@@ -1,10 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-  <!-- No background: let page dark background show through -->
-  <g stroke="#fff" stroke-width="60" fill="none"
-     stroke-linecap="round" stroke-linejoin="round">
-    <path d="M200 150V500q0 60 60 60H600"/>
-    <path d="M300 150V500q0 60 60 60H600"/>
-    <path d="M400 150V500q0 60 60 60H600"/>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1024 1024"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Letyar logomark preview</title>
+  <desc id="desc">
+    Three rounded nested grooves and a lacquer accent dot on black
+  </desc>
+
+  <rect width="1024" height="1024" fill="#000000"/>
+
+  <g
+    fill="none"
+    stroke="#1A1714"
+    stroke-width="48"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M260 252V508C260 672 374 768 544 768H760"/>
+    <path d="M352 252V508C352 616 427 672 544 672H760"/>
+    <path d="M448 252V508C448 560 484 576 544 576H760"/>
   </g>
-  <circle cx="260" cy="500" r="35" fill="#f33"/>
+
+  <circle cx="527" cy="504" r="37" fill="#E34B2E"/>
 </svg>
