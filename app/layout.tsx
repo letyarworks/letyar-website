@@ -59,6 +59,43 @@ export default function RootLayout({
         href="https://api.fontshare.com/v2/css?f[]=general-sans@600&f[]=satoshi@400,500&display=swap"
       />
       <body className="font-body bg-ink text-paper antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://letyarlabs.com/#organization",
+                  name: "Letyar Labs",
+                  alternateName: "Letyar",
+                  url: "https://letyarlabs.com",
+                  logo: "https://letyarlabs.com/icon.svg",
+                  email: "hello@letyarlabs.com",
+                  description:
+                    "Web, software and digital product engineering from Yangon, Myanmar.",
+                  sameAs: [
+                    "https://github.com/letyarworks",
+                    "https://x.com/letyarworks",
+                    "https://t.me/letyarworks",
+                    "https://www.linkedin.com/in/letyarworks"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://letyarlabs.com/#website",
+                  url: "https://letyarlabs.com",
+                  name: "Letyar Labs",
+                  alternateName: "Letyar",
+                  publisher: {
+                    "@id": "https://letyarlabs.com/#organization"
+                  }
+                }
+              ]
+            })
+          }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />
