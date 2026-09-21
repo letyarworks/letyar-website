@@ -1,7 +1,10 @@
 import ContactForm from "@/components/ContactForm";
 import { socials } from "@/lib/content";
 
-export const metadata = { title: "Contact — Letyar" };
+export const metadata = {
+  title: "Contact",
+  description: "Contact Letyar Labs about a website, software or digital product project.",
+};
 
 export default function ContactPage() {
   return (
