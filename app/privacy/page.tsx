@@ -26,10 +26,12 @@ export default function PrivacyPage() {
           <h2 className="font-display text-lg font-semibold text-paper">2. Information you provide</h2>
           <p className="mt-2">
             The website contact form asks for your name, email address, project
-            type and project message. At the current stage, the form is a
-            client-side interface and does not send or store those fields on a
-            Letyar Labs server. For direct enquiries, you can email
-            hello@letyarlabs.com.
+            type and project message. When you submit the form, the information
+            is transmitted through our email delivery provider and delivered to
+            hello@letyarlabs.com so we can respond to your enquiry. The email
+            provider may process technical delivery data under its own privacy
+            policy. Please do not submit sensitive personal information through
+            the contact form.
           </p>
         </section>
 
@@ -37,10 +39,10 @@ export default function PrivacyPage() {
           <h2 className="font-display text-lg font-semibold text-paper">3. Automatically collected information</h2>
           <p className="mt-2">
             This site does not intentionally collect sensitive personal
-            information. If hosting, security or infrastructure providers
-            create technical logs such as IP address, browser information or
-            request timestamps, those logs are handled by the relevant
-            infrastructure provider under its own policies.
+            information. Hosting, security, email delivery or other
+            infrastructure providers may create technical logs such as IP
+            address, browser information or request timestamps under their own
+            policies.
           </p>
         </section>
 
@@ -58,7 +60,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-lg font-semibold text-paper">5. External links</h2>
           <p className="mt-2">
             The site links to services such as GitHub, X, Telegram, LinkedIn
-            and the founder's website. Those services operate independently
+            and the founder&apos;s website. Those services operate independently
             and have their own privacy policies.
           </p>
         </section>
