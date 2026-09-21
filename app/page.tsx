@@ -1,7 +1,7 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
 import TemplateCard9x16 from "@/components/TemplateCard9x16";
-import { services, tiers, clients, testimonials, templates } from "@/lib/content";
+import { services, tiers, clients, templates } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -116,8 +116,8 @@ export default function Home() {
               Templates for your business
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Pick a template, sign up, customize it in your dashboard, then
-              publish — paid instantly with KBZPay, Wave Pay or KBZ Bank.
+              Ready-made starting points for businesses that want a clean,
+              focused web presence without starting from zero.
             </p>
           </div>
           <Link href="/templates" className="hidden shrink-0 font-mono text-sm text-cyan hover:text-paper md:block">
@@ -203,19 +203,6 @@ export default function Home() {
           >
             Full pricing →
           </Link>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="font-mono text-xs uppercase tracking-widest text-slate">From past projects</p>
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="border-l-2 border-cyan/50 pl-5">
-              <blockquote className="font-body text-sm text-mist">&ldquo;{t.quote}&rdquo;</blockquote>
-              <figcaption className="mt-3 font-mono text-xs text-slate">{t.name}</figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 
