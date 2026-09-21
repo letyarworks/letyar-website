@@ -28,6 +28,8 @@ export default function Footer() {
               <li><Link href="/pricing" className="hover:text-paper">Pricing</Link></li>
               <li><Link href="/about" className="hover:text-paper">About</Link></li>
               <li><Link href="/contact" className="hover:text-paper">Contact</Link></li>
+              <li><Link href="/privacy" className="hover:text-paper">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-paper">Terms</Link></li>
               <li>
                 <a href="https://aungbobokyaw.com" target="_blank" rel="noopener noreferrer" className="hover:text-paper">
                   Founder ↗
