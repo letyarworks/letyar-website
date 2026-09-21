@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="14" fill="#0B1220"/>
-  <g stroke="#F7FAFC" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M18 16 V48 A34 34 0 0 0 52 82 H82"/>
-    <path d="M30 16 V48 A22 22 0 0 0 52 70 H82" stroke="#19D3E6"/>
-    <path d="M42 16 V48 A10 10 0 0 0 52 58 H82"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Letyar Logomark — Monochrome White</title>
+  <desc id="desc">Three rounded nested grooves in white</desc>
+  <g fill="none" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M260 252V508C260 672 374 768 544 768H760"/>
+    <path d="M352 252V508C352 616 427 672 544 672H760"/>
+    <path d="M448 252V508C448 560 484 576 544 576H760"/>
   </g>
-  <circle cx="52" cy="48" r="4.5" fill="#E0B04B"/>
+  <circle cx="527" cy="504" r="37" fill="#FFFFFF"/>
 </svg>
