@@ -92,35 +92,38 @@ export default function PricingPage() {
         </table>
       </div>
 
-      {/* FAQ */}
-      <div className="mt-20 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2">
-        <div>
-          <p className="font-body text-sm font-medium text-paper">What if my project doesn't fit a tier?</p>
-          <p className="mt-1 font-body text-sm text-mist">
-            Most Product-tier work is scoped individually. Book a scope call
-            and we'll send a fixed price before anything starts.
-          </p>
-        </div>
-        <div>
-          <p className="font-body text-sm font-medium text-paper">How does payment work?</p>
-          <p className="mt-1 font-body text-sm text-mist">
-            50% to start, 50% on delivery for fixed-price tiers. Larger
-            Product builds can be split into milestones.
-          </p>
-        </div>
-        <div>
-          <p className="font-body text-sm font-medium text-paper">Do you work with clients outside Myanmar?</p>
-          <p className="mt-1 font-body text-sm text-mist">
-            Yes — Letyar is based in Yangon and works with clients remotely,
-            across time zones.
-          </p>
-        </div>
-        <div>
-          <p className="font-body text-sm font-medium text-paper">What happens after launch?</p>
-          <p className="mt-1 font-body text-sm text-mist">
-            Every tier includes a support window after delivery. Ongoing
-            retainers are available for continued work.
-          </p>
+      {/* FAQ — click a question to expand its answer */}
+      <div className="mt-20 border-t border-white/10 pt-10">
+        <h2 className="font-display text-xl font-semibold text-paper">Frequently asked</h2>
+        <div className="mt-6 divide-y divide-white/10 border-b border-white/10">
+          {[
+            {
+              q: "What if my project doesn't fit a tier?",
+              a: "Most Product-tier work is scoped individually. Book a scope call and we'll send a fixed price before anything starts.",
+            },
+            {
+              q: "How does payment work?",
+              a: "50% to start, 50% on delivery for fixed-price tiers. Larger Product builds can be split into milestones.",
+            },
+            {
+              q: "Do you work with clients outside Myanmar?",
+              a: "Yes — Letyar is based in Yangon and works with clients remotely, across time zones.",
+            },
+            {
+              q: "What happens after launch?",
+              a: "Every tier includes a support window after delivery. Ongoing retainers are available for continued work.",
+            },
+          ].map((item) => (
+            <details key={item.q} className="group py-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-sm font-medium text-paper marker:content-none">
+                {item.q}
+                <span className="shrink-0 font-mono text-cyan transition-transform duration-200 group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 font-body text-sm text-mist">{item.a}</p>
+            </details>
+          ))}
         </div>
       </div>
 

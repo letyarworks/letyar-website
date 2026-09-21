@@ -144,7 +144,7 @@ export const tiers: Tier[] = [
   },
 ];
 
-export const partners = ["Partner 01", "Partner 02", "Partner 03", "Partner 04", "Partner 05", "Partner 06"];
+export const clients = ["Client 01", "Client 02", "Client 03", "Client 04", "Client 05", "Client 06"];
 
 export type WorkItem = {
   slug: string;

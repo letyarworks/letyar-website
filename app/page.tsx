@@ -1,7 +1,7 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
 import TemplateCard9x16 from "@/components/TemplateCard9x16";
-import { services, tiers, partners, testimonials, templates } from "@/lib/content";
+import { services, tiers, clients, testimonials, templates } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -62,14 +62,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* PARTNERS MARQUEE — placeholder wordmarks, swap for real logos */}
+        {/* CLIENTS MARQUEE — placeholder wordmarks, swap for real logos */}
         <div className="border-t border-white/5 bg-navy/60 py-6">
           <p className="mx-auto max-w-6xl px-6 font-mono text-[11px] uppercase tracking-widest text-slate">
             Trusted by teams building in Myanmar and beyond
           </p>
           <div className="relative mt-4 overflow-hidden">
             <div className="flex w-max animate-marquee gap-16">
-              {[...partners, ...partners].map((p, i) => (
+              {[...clients, ...clients].map((p, i) => (
                 <span key={i} className="font-display text-lg text-slate/70 whitespace-nowrap">
                   {p}
                 </span>
