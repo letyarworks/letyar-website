@@ -14,8 +14,8 @@ export default function TemplatesPage() {
         Pick one, make it yours, publish it
       </h1>
       <p className="mt-4 max-w-lg font-body text-sm text-mist">
-        Select a template → sign up → customize it in your dashboard →
-        publish, paid instantly with KBZPay, Wave Pay or KBZ Bank.
+        Select a template → review the scope → customize it when the
+        client workflow is connected → publish when ready.
       </p>
 
       <div className="mt-10 flex flex-wrap gap-x-8 gap-y-12">
