@@ -2,7 +2,10 @@ import Link from "next/link";
 import { templates } from "@/lib/content";
 import TemplateCard9x16 from "@/components/TemplateCard9x16";
 
-export const metadata = { title: "Templates — Letyar" };
+export const metadata = {
+  title: "Templates",
+  description: "Ready-made website starting points from Letyar Labs.",
+};
 
 export default function TemplatesPage() {
   return (
