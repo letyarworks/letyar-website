@@ -10,7 +10,7 @@ export default function Home() {
       <section className="relative overflow-hidden ridge-watermark">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
           <div className="flex items-center gap-3">
-            <RidgeMark size={40} animated />
+            <RidgeMark size={40} />
             <span className="font-mono text-xs uppercase tracking-widest text-cyan">
               Web · Software · Product
             </span>
@@ -65,7 +65,7 @@ export default function Home() {
         {/* CLIENTS MARQUEE — placeholder wordmarks, swap for real logos */}
         <div className="border-t border-white/5 bg-navy/60 py-6">
           <p className="mx-auto max-w-6xl px-6 font-mono text-[11px] uppercase tracking-widest text-slate">
-            Trusted by teams building in Myanmar and beyond
+            Selected projects
           </p>
           <div className="relative mt-4 overflow-hidden">
             <div className="flex w-max animate-marquee gap-16">
