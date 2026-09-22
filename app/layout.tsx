@@ -3,7 +3,6 @@ import { JetBrains_Mono, Noto_Sans_Myanmar } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ViberButton from "@/components/ViberButton";
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -18,9 +17,30 @@ const myanmar = Noto_Sans_Myanmar({
 });
 
 export const metadata: Metadata = {
-  title: "Letyar Labs — Every build carries a fingerprint",
+  metadataBase: new URL("https://aungbobokyaw.com"),
+  title: {
+    default: "Aung Bo Bo Kyaw — Technician, builder, founder of Letyar Labs",
+    template: "%s — Aung Bo Bo Kyaw",
+  },
   description:
-    "Letyar (လက်ရာ) is a Yangon-based Web, Software & Product studio. Every build carries a fingerprint.",
+    "Aung Bo Bo Kyaw's personal site — writing, training, and the path from electronics repair technician to product builder.",
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Aung Bo Bo Kyaw",
+    title: "Aung Bo Bo Kyaw — Technician, builder, founder of Letyar Labs",
+    description:
+      "Writing, training, and the path from electronics repair technician to product builder.",
+    url: "https://aungbobokyaw.com",
+  },
+  twitter: {
+    card: "summary",
+    title: "Aung Bo Bo Kyaw",
+    description:
+      "Writing, training, and the path from electronics repair technician to product builder.",
+  },
 };
 
 export default function RootLayout({
@@ -30,10 +50,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${mono.variable} ${myanmar.variable}`}>
-      {/* General Sans + Satoshi are Fontshare-exclusive faces named in
-          TYPOGRAPHY.md — loaded here since next/font/google doesn't carry them.
-          If Fontshare is unreachable in your environment, self-host the two
-          families instead (see README "Fonts"). */}
       <link
         rel="stylesheet"
         href="https://api.fontshare.com/v2/css?f[]=general-sans@600&f[]=satoshi@400,500&display=swap"
@@ -42,7 +58,6 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <ViberButton />
       </body>
     </html>
   );

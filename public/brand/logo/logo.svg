@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
   <!-- No background: let page dark background show through -->
   <g stroke="#fff" stroke-width="60" fill="none"
@@ -8,3 +9,15 @@
   </g>
   <circle cx="260" cy="500" r="35" fill="#f33"/>
 </svg>
+=======
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Letyar Logomark — Monochrome White</title>
+  <desc id="desc">Three rounded nested grooves in white</desc>
+  <g fill="none" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M260 252V508C260 672 374 768 544 768H760"/>
+    <path d="M352 252V508C352 616 427 672 544 672H760"/>
+    <path d="M448 252V508C448 560 484 576 544 576H760"/>
+  </g>
+  <circle cx="527" cy="504" r="37" fill="#FFFFFF"/>
+</svg>
+>>>>>>> e9f4e0b2c42aa2a872b768837ecae5786790106e

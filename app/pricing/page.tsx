@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { tiers } from "@/lib/content";
 
-export const metadata = { title: "Pricing — Letyar" };
+export const metadata = {
+  title: "Pricing",
+  description: "Starting prices and engagement options for Letyar Labs web, software and product work.",
+};
 
 const compareRows = [
   { label: "Pages / scope", values: ["Up to 5 pages", "Up to 12 pages or small store", "Custom scope"] },

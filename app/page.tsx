@@ -1,240 +1,129 @@
 import Link from "next/link";
-import RidgeMark from "@/components/RidgeMark";
-import TemplateCard9x16 from "@/components/TemplateCard9x16";
-import { services, tiers, clients, testimonials, templates } from "@/lib/content";
+import { getAllPosts } from "@/lib/posts";
+import { getAllCourses } from "@/lib/courses";
 
 export default function Home() {
+  const posts = getAllPosts().slice(0, 3);
+  const courses = getAllCourses().slice(0, 3);
+
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden ridge-watermark">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <div className="flex items-center gap-3">
-            <RidgeMark size={40} animated />
-            <span className="font-mono text-xs uppercase tracking-widest text-cyan">
-              Web · Software · Product
-            </span>
-          </div>
-          <h1 className="mt-7 max-w-2xl font-display text-4xl font-semibold leading-[1.1] text-paper md:text-6xl">
-            Every build carries
-            <br />
-            <span className="relative inline-block">
-              a fingerprint.
-              <svg
-                viewBox="0 0 220 14"
-                className="absolute -bottom-2 left-0 h-3 w-full text-gold"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 8 Q 55 -2 110 6 T 218 5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  pathLength={1}
-                  className="dashline"
-                  style={{ animationDelay: "0.9s" }}
-                />
-              </svg>
-            </span>
-          </h1>
-          <p className="mt-3 font-mm text-base text-mist/80 md:text-lg">
-            ကိုယ်ပိုင်လက်ရာနဲ့ တည်ဆောက်ပါတယ်။
-          </p>
-          <p className="mt-6 max-w-lg font-body text-base text-mist md:text-lg">
-            Letyar (လက်ရာ) is a Yangon-based studio building websites, software
-            and products with the same care a craftsperson puts into their
-            work — clear, useful, and shipped.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/work"
-              className="rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper"
-            >
-              View our work
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-sm border border-white/15 px-6 py-3 font-mono text-sm font-medium text-paper transition hover:border-white/40"
-            >
-              Start a project
-            </Link>
-          </div>
-        </div>
-
-        {/* CLIENTS MARQUEE — placeholder wordmarks, swap for real logos */}
-        <div className="border-t border-white/5 bg-navy/60 py-6">
-          <p className="mx-auto max-w-6xl px-6 font-mono text-[11px] uppercase tracking-widest text-slate">
-            Trusted by teams building in Myanmar and beyond
-          </p>
-          <div className="relative mt-4 overflow-hidden">
-            <div className="flex w-max animate-marquee gap-16">
-              {[...clients, ...clients].map((p, i) => (
-                <span key={i} className="font-display text-lg text-slate/70 whitespace-nowrap">
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="font-mono text-xs uppercase tracking-widest text-slate">What we build</p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
-          Three disciplines, one studio
-        </h2>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {services.map((s, i) => (
-            <div
-              key={s.key}
-              className="animate-rise border border-white/10 bg-navy p-6"
-              style={{ animationDelay: `${i * 90}ms` }}
-            >
-              <h3 className="font-display text-lg font-semibold text-paper">{s.title}</h3>
-              <p className="mt-2 font-body text-sm text-mist">{s.body}</p>
-              <ul className="mt-4 space-y-1.5">
-                {s.items.map((it) => (
-                  <li key={it} className="flex gap-2 font-body text-sm text-mist/80">
-                    <span className="text-gold">·</span>
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* TEMPLATES */}
-      <section className="border-y border-white/5 bg-navy/40 py-20">
-        <div className="mx-auto flex max-w-6xl items-end justify-between px-6">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-slate">Ready-made</p>
-            <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
-              Templates for your business
-            </h2>
-            <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Pick a template, sign up, customize it in your dashboard, then
-              publish — paid instantly with KBZPay, Wave Pay or KBZ Bank.
-            </p>
-          </div>
-          <Link href="/templates" className="hidden shrink-0 font-mono text-sm text-cyan hover:text-paper md:block">
-            View all →
+      <section className="mx-auto max-w-5xl px-6 py-24 md:py-32">
+        <p className="font-mono text-xs uppercase tracking-widest text-lacquer">
+          Yangon, Myanmar
+        </p>
+        <h1 className="mt-5 max-w-2xl font-display text-4xl font-semibold leading-[1.1] text-paper md:text-5xl">
+          I fix things. Then I build them.
+        </h1>
+        <p className="mt-6 max-w-lg font-body text-base text-mist md:text-lg">
+          I started as an electronics repair technician. These days I build
+          software, run{" "}
+          <a href="https://letyarlabs.com" target="_blank" rel="noopener noreferrer" className="text-cyan hover:text-paper">
+            Letyar Labs
+          </a>
+          , and teach what I've picked up along the way.
+        </p>
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link href="/blog" className="rounded-sm bg-lacquer px-6 py-3 font-mono text-sm font-medium text-paper transition hover:brightness-110">
+            Read the blog
+          </Link>
+          <Link href="/training" className="rounded-sm border border-white/15 px-6 py-3 font-mono text-sm font-medium text-paper transition hover:border-white/40">
+            Training center
           </Link>
         </div>
-
-        <div className="relative mt-10 overflow-hidden">
-          <div className="flex w-max animate-[marqueeLTR_34s_linear_infinite] gap-5 px-6 hover:[animation-play-state:paused]">
-            {[...templates, ...templates].map((t, i) => (
-              <Link key={`${t.slug}-${i}`} href={`/templates/${t.slug}`} className="group">
-                <TemplateCard9x16 t={t} />
-              </Link>
-            ))}
-          </div>
-          {/* edge fade so cards don't hard-cut at the viewport edge */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-navy to-transparent md:w-16" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-navy to-transparent md:w-16" />
-        </div>
-
-        <Link
-          href="/templates"
-          className="mx-6 mt-6 inline-block font-mono text-sm text-cyan hover:text-paper md:hidden"
-        >
-          View all →
-        </Link>
       </section>
 
-      {/* PROCESS */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="font-mono text-xs uppercase tracking-widest text-slate">Process</p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
-          Scoped once, shipped on time
-        </h2>
+      {/* CROSS-LINK TO LETYAR */}
+      <section className="border-y border-white/5 bg-navy/40">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 px-6 py-14 md:flex-row md:items-center">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-slate">Also building</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-paper">Letyar Labs</h2>
+            <p className="mt-2 max-w-md font-body text-sm text-mist">
+              A Web, Software &amp; Product studio — where the client work
+              and the templates live.
+            </p>
+          </div>
+          <a
+            href="https://letyarlabs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whitespace-nowrap rounded-sm border border-cyan/40 px-6 py-3 font-mono text-sm text-cyan transition hover:bg-cyan hover:text-ink"
+          >
+            Visit letyarlabs.com ↗
+          </a>
+        </div>
+      </section>
+
+      {/* BLOG PREVIEW */}
+      <section className="mx-auto max-w-5xl px-6 py-20">
+        <div className="flex items-end justify-between">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-slate">Writing</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">Recent posts</h2>
+          </div>
+          <Link href="/blog" className="hidden font-mono text-sm text-lacquer hover:text-paper md:block">
+            All posts →
+          </Link>
+        </div>
         <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {[
-            { title: "Scope", body: "We define exactly what's being built and what it costs, before any work starts." },
-            { title: "Build", body: "Regular check-ins as the work progresses — no disappearing for weeks at a time." },
-            { title: "Ship", body: "Deployed, handed over, and documented — with a clear path for what comes next." },
-          ].map((s) => (
-            <div key={s.title} className="border-l-2 border-gold/60 pl-5">
-              <h3 className="font-display text-lg font-semibold text-paper">{s.title}</h3>
-              <p className="mt-2 font-body text-sm text-mist">{s.body}</p>
-            </div>
+          {posts.map((p, i) => (
+            <Link
+              key={p.slug}
+              href={`/blog/${p.slug}`}
+              className="animate-rise border border-white/10 bg-navy p-6 transition hover:border-lacquer/50"
+              style={{ animationDelay: `${i * 90}ms` }}
+            >
+              <p className="font-mono text-[11px] text-slate">{p.date}</p>
+              <h3 className="mt-2 font-display text-lg font-semibold text-paper">{p.title}</h3>
+              <p className="mt-2 font-body text-sm text-mist">{p.summary}</p>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* PRICING PREVIEW */}
+      {/* TRAINING PREVIEW */}
       <section className="border-y border-white/5 bg-navy/40">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mx-auto max-w-5xl px-6 py-20">
           <div className="flex items-end justify-between">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-slate">Pricing</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-slate">Training center</p>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
-                Clear pricing, no surprise invoices
+                Learn what I actually use
               </h2>
             </div>
-            <Link href="/pricing" className="hidden font-mono text-sm text-cyan hover:text-paper md:block">
-              Full pricing →
+            <Link href="/training" className="hidden font-mono text-sm text-lacquer hover:text-paper md:block">
+              All courses →
             </Link>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {tiers.map((t) => (
-              <div
-                key={t.name}
-                className={`flex flex-col border p-6 ${
-                  t.highlighted ? "border-cyan bg-ink" : "border-white/10 bg-ink/60"
-                }`}
-              >
-                <p className="font-mono text-xs uppercase tracking-wider text-slate">{t.name}</p>
-                <p className="mt-3 font-display text-2xl font-semibold text-paper">
-                  {t.price}
-                  <span className="ml-1.5 font-body text-sm font-normal text-mist">/ {t.unit}</span>
-                </p>
-                <p className="mt-2 font-body text-sm text-mist">{t.desc}</p>
+            {courses.map((c) => (
+              <div key={c.slug} className="border border-white/10 bg-ink p-6">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-gold">{c.level}</p>
+                <h3 className="mt-2 font-display text-base font-semibold text-paper">{c.title}</h3>
+                <p className="mt-2 font-body text-sm text-mist">{c.summary}</p>
+                <p className="mt-4 font-mono text-xs text-slate">{c.duration} · {c.price}</p>
               </div>
             ))}
           </div>
-          <Link
-            href="/pricing"
-            className="mt-8 inline-block font-mono text-sm text-cyan hover:text-paper md:hidden"
-          >
-            Full pricing →
-          </Link>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="font-mono text-xs uppercase tracking-widest text-slate">From past projects</p>
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="border-l-2 border-cyan/50 pl-5">
-              <blockquote className="font-body text-sm text-mist">&ldquo;{t.quote}&rdquo;</blockquote>
-              <figcaption className="mt-3 font-mono text-xs text-slate">{t.name}</figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-6 pb-24">
+      <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="flex flex-col items-start justify-between gap-6 border border-white/10 bg-navy p-10 md:flex-row md:items-center">
           <div>
-            <h2 className="font-display text-2xl font-semibold text-paper">
-              Have a build in mind?
-            </h2>
+            <h2 className="font-display text-2xl font-semibold text-paper">Want to work together?</h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Tell us what you're building. We'll reply with a scope and a price.
+              For project work, that's <a href="https://letyarlabs.com/contact" target="_blank" rel="noopener noreferrer" className="text-cyan hover:text-paper">Letyar Labs</a>. For everything else — training, speaking, questions — reach out directly.
             </p>
           </div>
           <Link
             href="/contact"
-            className="whitespace-nowrap rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper"
+            className="whitespace-nowrap rounded-sm bg-lacquer px-6 py-3 font-mono text-sm font-medium text-paper transition hover:brightness-110"
           >
-            Start a project
+            Get in touch
           </Link>
         </div>
       </section>

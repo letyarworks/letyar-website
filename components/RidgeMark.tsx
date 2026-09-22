@@ -3,7 +3,6 @@ export default function RidgeMark({
   className = "",
 }: {
   size?: number;
-  animated?: boolean;
   className?: string;
 }) {
   return (
@@ -13,7 +12,6 @@ export default function RidgeMark({
       height={size}
       className={className}
       alt="Letyar"
-      aria-hidden="true"
     />
   );
 }

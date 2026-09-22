@@ -144,7 +144,7 @@ export const tiers: Tier[] = [
   },
 ];
 
-export const clients = ["Client 01", "Client 02", "Client 03", "Client 04", "Client 05", "Client 06"];
+export const clients = ["Letyar Rates", "MeeNyo", "Pyaw", "SXOPOP"];
 
 export type WorkItem = {
   slug: string;
@@ -154,28 +154,13 @@ export type WorkItem = {
 };
 
 export const work: WorkItem[] = [
-  { slug: "riverline-storefront", title: "Riverline Storefront", category: "Web", summary: "E-commerce site for a home goods brand, built for mobile-first checkout." },
-  { slug: "atlas-ops-dashboard", title: "Atlas Ops Dashboard", category: "Software", summary: "Internal operations dashboard replacing three spreadsheets and a shared inbox." },
-  { slug: "fieldnote-mvp", title: "Fieldnote MVP", category: "Product", summary: "First shipped version of a field-reporting app for a logistics team." },
-  { slug: "harbor-landing", title: "Harbor Landing Page", category: "Web", summary: "Launch page for an early-stage product, built and live within a week." },
-  { slug: "ledger-automation", title: "Ledger Automation", category: "Software", summary: "Automated invoice-to-spreadsheet workflow, removing a weekly manual task." },
-  { slug: "kiosk-product-build", title: "Kiosk Product Build", category: "Product", summary: "End-to-end build of a single-product storefront concept, from scope to launch." },
+  { slug: "letyar-rates", title: "Letyar Rates", category: "Product", summary: "Android rates app for live USD/MMK and gold-rate information, built as a Letyar product." },
+  { slug: "meenyo", title: "MeeNyo", category: "Product", summary: "Privacy-first social app concept with temporary Stories, built as an ongoing Letyar product." },
+  { slug: "pyaw", title: "Pyaw", category: "Software", summary: "Chat application project exploring messaging, product architecture and mobile UX." },
+  { slug: "sxopop", title: "SXOPOP Intelligent Hub", category: "Web", summary: "Web product and brand system for an intelligent digital hub." },
 ];
 
-export const testimonials = [
-  {
-    quote: "The site was live in under three weeks and it actually matched what we asked for the first time.",
-    name: "Small business owner, Yangon",
-  },
-  {
-    quote: "Letyar automated a task our team did by hand every Monday. That alone paid for the project.",
-    name: "Operations manager, logistics",
-  },
-  {
-    quote: "Direct, no wasted meetings. We scoped it once and it shipped on the date we agreed.",
-    name: "Founder, early-stage product",
-  },
-];
+
 
 export const socials = [
   { label: "GitHub", href: "https://github.com/letyarworks" },

@@ -1,0 +1,8 @@
+{
+  "name": "letyar-website",
+  "type": "website",
+  "framework": "next",
+  "version": "1.0.0",
+  "org": "letyarworks",
+  "domain": "letyarlabs.com"
+}
