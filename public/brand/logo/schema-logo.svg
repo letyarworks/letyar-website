@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-labelledby="title desc">
+  <title id="title">Letyar Logomark — Cream Background</title>
+  <desc id="desc">Three rounded nested grooves with a lacquer accent dot</desc>
+  <rect width="1024" height="1024" fill="#F5F0E6"/>
+  <g fill="none" stroke="#1A1714" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M260 252V508C260 672 374 768 544 768H760"/>
+    <path d="M352 252V508C352 616 427 672 544 672H760"/>
+    <path d="M448 252V508C448 560 484 576 544 576H760"/>
+  </g>
+  <circle cx="527" cy="504" r="37" fill="#E34B2E"/>
+</svg>
