@@ -20,11 +20,10 @@ export default function WorkPage({
     <section className="mx-auto max-w-6xl px-6 py-16">
       <p className="font-mono text-xs uppercase tracking-widest text-slate">Selected work</p>
       <h1 className="mt-2 font-display text-3xl font-semibold text-paper md:text-4xl">
-        Built, shipped, and still running
+        Selected builds
       </h1>
       <p className="mt-4 max-w-lg font-body text-sm text-mist">
-        Project imagery below is a placeholder schematic — real case-study
-        screenshots go here as projects are published.
+        A selection of Letyar projects across web, software and digital products.\n        Detailed case studies will be added as each project is published.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
