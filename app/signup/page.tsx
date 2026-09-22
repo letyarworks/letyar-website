@@ -1,18 +1,12 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
-import SignupForm from "@/components/SignupForm";
-import TemplateCard9x16 from "@/components/TemplateCard9x16";
-import { getTemplate } from "@/lib/content";
 
-export const metadata = {\n  title: "Sign up — Letyar",\n  robots: { index: false, follow: false },\n};
+export const metadata = {
+  title: "Client portal — Letyar",
+  robots: { index: false, follow: false },
+};
 
-export default function SignupPage({
-  searchParams,
-}: {
-  searchParams: { template?: string };
-}) {
-  const template = searchParams.template ? getTemplate(searchParams.template) : undefined;
-
+export default function SignupPage() {
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-16">
       <Link href="/" className="mb-8 flex items-center gap-2.5">
@@ -20,33 +14,32 @@ export default function SignupPage({
         <span className="font-display text-lg font-semibold text-paper">Letyar</span>
       </Link>
 
-      <h1 className="font-display text-2xl font-semibold text-paper">Create an account</h1>
-      <p className="mt-2 font-body text-sm text-mist">
-        Client accounts will be available when the project portal is ready.
+      <p className="font-mono text-xs uppercase tracking-widest text-slate">
+        Client portal
+      </p>
+      <h1 className="mt-2 font-display text-2xl font-semibold text-paper">
+        Client accounts are not open yet
+      </h1>
+      <p className="mt-3 font-body text-sm leading-relaxed text-mist">
+        Accounts will be available when the project portal is ready. You can
+        start a project now without an account by sending the details through
+        the contact page.
       </p>
 
-      {template && (
-        <div className="mt-6 flex items-center gap-4 border border-cyan/30 bg-navy p-4">
-          <TemplateCard9x16 t={template} className="w-16" />
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-wider text-slate">Selected template</p>
-            <p className="font-display text-sm font-semibold text-paper">{template.title}</p>
-          </div>
-        </div>
-      )}
-
-      <SignupForm template={template?.slug} />
-
-      <p className="mt-6 font-body text-sm text-mist">
-        Already have an account?{" "}
-        <Link href="/login" className="text-cyan hover:text-paper">
-          Log in
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/contact"
+          className="rounded-sm bg-cyan px-6 py-3 text-center font-mono text-sm font-medium text-ink transition hover:bg-paper"
+        >
+          Start a project
         </Link>
-      </p>
-
-      <p className="mt-10 font-mono text-[11px] text-slate">
-        Not wired to real authentication yet — see README &ldquo;Adding auth&rdquo;.
-      </p>
+        <Link
+          href="/"
+          className="rounded-sm border border-white/15 px-6 py-3 text-center font-mono text-sm text-paper transition hover:border-white/40"
+        >
+          Back to home
+        </Link>
+      </div>
     </section>
   );
 }
