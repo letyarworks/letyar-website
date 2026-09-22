@@ -13,6 +13,9 @@ export async function POST(request: Request) {
     const name = clean(body.name, 120);
     const email = clean(body.email, 254);
     const projectType = clean(body.projectType, 80);
+    const businessType = clean(body.businessType, 80);
+    const budget = clean(body.budget, 80);
+    const timeline = clean(body.timeline, 80);
     const template = clean(body.template, 120);
     const message = clean(body.message, 5000);
     const website = clean(body.website, 200);
@@ -46,7 +49,10 @@ export async function POST(request: Request) {
       "",
       `Name: ${name}`,
       `Email: ${email}`,
+      `Business / project: ${businessType || "Not specified"}`,
       `Project type: ${projectType || "Not specified"}`,
+      `Budget range: ${budget || "Not specified"}`,
+      `Target timeline: ${timeline || "Flexible"}`,
       `Template requested: ${template || "None"}`,
       "",
       "Project details:",
