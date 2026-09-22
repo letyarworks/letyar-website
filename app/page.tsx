@@ -116,15 +116,14 @@ export default function Home() {
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-slate">Ready-made</p>
             <h2 className="mt-2 font-display text-2xl font-semibold text-paper md:text-3xl">
-              Templates for your business
+              Business-ready starting points
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Ready-made starting points for businesses that want a clean,
-              focused web presence without starting from zero.
+              Ready-made starting points for businesses that want a clean, focused web presence without starting from zero. We customize the selected direction to fit the actual business.
             </p>
           </div>
           <Link href="/templates" className="hidden shrink-0 font-mono text-sm text-cyan hover:text-paper md:block">
-            View all →
+            Explore templates →
           </Link>
         </div>
 
