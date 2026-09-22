@@ -60,3 +60,13 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes ridgeDrift {
+  0%   { background-position: right -60px top -40px; opacity: 0.8; }
+  50%  { background-position: right -100px top -80px; opacity: 1; }
+  100% { background-position: right -60px top -40px; opacity: 0.8; }
+}
+
+.ridge-watermark {
+  animation: ridgeDrift 18s ease-in-out infinite;
+}
