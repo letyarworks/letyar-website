@@ -43,14 +43,13 @@ export default function TemplateDetail({ params }: { params: { slug: string } })
           </div>
 
           <Link
-            href={`/signup?template=${t.slug}`}
+            href={`/contact?template=${t.slug}`}
             className="mt-6 block w-full rounded-sm bg-cyan px-6 py-3 text-center font-mono text-sm font-medium text-ink transition hover:bg-paper"
           >
-            Select this template
+            Request this template
           </Link>
           <p className="mt-3 font-body text-xs text-slate">
-            Sign up → customize in your dashboard → publish when ready. You
-            only pay at the publish step.
+            Tell us which template you want. We’ll confirm the scope, customize it for your business, and send the final price before work starts.
           </p>
 
           <div className="mt-8">
