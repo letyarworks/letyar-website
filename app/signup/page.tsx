@@ -4,7 +4,7 @@ import SignupForm from "@/components/SignupForm";
 import TemplateCard9x16 from "@/components/TemplateCard9x16";
 import { getTemplate } from "@/lib/content";
 
-export const metadata = { title: "Sign up — Letyar" };
+export const metadata = {\n  title: "Sign up — Letyar",\n  robots: { index: false, follow: false },\n};
 
 export default function SignupPage({
   searchParams,
@@ -22,7 +22,7 @@ export default function SignupPage({
 
       <h1 className="font-display text-2xl font-semibold text-paper">Create an account</h1>
       <p className="mt-2 font-body text-sm text-mist">
-        For clients tracking an active project, or building with a template.
+        Client accounts will be available when the project portal is ready.
       </p>
 
       {template && (
