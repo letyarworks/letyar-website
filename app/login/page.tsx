@@ -1,7 +1,7 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
 
-export const metadata = { title: "Log in — Letyar" };
+export const metadata = {\n  title: "Log in — Letyar",\n  robots: { index: false, follow: false },\n};
 
 export default function LoginPage() {
   return (
