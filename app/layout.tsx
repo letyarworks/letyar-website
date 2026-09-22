@@ -71,7 +71,7 @@ export default function RootLayout({
                   name: "Letyar Labs",
                   alternateName: "Letyar",
                   url: "https://letyarlabs.com",
-                  logo: "https://letyarlabs.com/icon.svg",
+                  logo: "https://letyarlabs.com/brand/logo/schema-logo.svg",
                   email: "hello@letyarlabs.com",
                   description:
                     "Web, software and digital product engineering from Yangon, Myanmar.",
