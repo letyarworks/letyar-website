@@ -38,8 +38,11 @@ export default function TemplateDetail({ params }: { params: { slug: string } })
           <p className="mt-3 font-body text-sm text-mist">{t.description}</p>
 
           <div className="mt-6 flex items-center justify-between border-y border-white/10 py-4">
-            <span className="font-mono text-2xl font-medium text-paper">{formatMMK(t.price)}</span>
-            <span className="font-mono text-xs text-slate">One-time, pay on publish</span>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-wider text-slate">Base template price</p>
+              <span className="mt-1 block font-mono text-2xl font-medium text-paper">{formatMMK(t.price)}</span>
+            </div>
+            <span className="max-w-40 text-right font-body text-xs text-slate">Customization is scoped separately.</span>
           </div>
 
           <Link
