@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 type Status = "idle" | "submitting" | "sent" | "error";
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const template = searchParams.get("template") || "";
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState("");
@@ -38,6 +41,7 @@ export default function ContactForm() {
           name,
           email,
           projectType: String(data.get("projectType") || ""),
+          template,
           message,
           website: String(data.get("website") || ""),
         }),
