@@ -2,10 +2,7 @@ import Link from "next/link";
 import { templates } from "@/lib/content";
 import TemplateCard9x16 from "@/components/TemplateCard9x16";
 
-export const metadata = {
-  title: "Templates",
-  description: "Ready-made website starting points from Letyar Labs.",
-};
+export const metadata = { title: "Templates — Letyar" };
 
 export default function TemplatesPage() {
   return (
@@ -17,8 +14,8 @@ export default function TemplatesPage() {
         Pick one, make it yours, publish it
       </h1>
       <p className="mt-4 max-w-lg font-body text-sm text-mist">
-        Select a template → review the scope → customize it when the
-        client workflow is connected → publish when ready.
+        Select a template → sign up → customize it in your dashboard →
+        publish, paid instantly with KBZPay, Wave Pay or KBZ Bank.
       </p>
 
       <div className="mt-10 flex flex-wrap gap-x-8 gap-y-12">
