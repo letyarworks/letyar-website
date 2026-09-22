@@ -38,12 +38,21 @@ export const metadata: Metadata = {
     title: "Letyar Labs — Web, Software & Product",
     description:
       "Practical websites, software and digital products from Yangon, Myanmar.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Letyar Labs — Web, Software & Product",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Letyar Labs — Web, Software & Product",
     description:
       "Practical websites, software and digital products from Yangon, Myanmar.",
+    images: ["/opengraph-image"],
   },
 };
 
