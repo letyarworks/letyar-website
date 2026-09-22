@@ -1,12 +1,19 @@
 import ContactForm from "@/components/ContactForm";
-import { socials } from "@/lib/content";
+import { socials, getTemplate } from "@/lib/content";
 
 export const metadata = {
   title: "Contact",
   description: "Contact Letyar Labs about a website, software or digital product project.",
 };
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams?: { template?: string };
+}) {
+  const requestedTemplate = searchParams?.template ? getTemplate(searchParams.template) : undefined;
+  const template = requestedTemplate?.title || "";
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-5">
@@ -16,8 +23,8 @@ export default function ContactPage() {
             Tell us what you're building
           </h1>
           <p className="mt-4 font-body text-sm text-mist">
-            Scope calls are free. Send a few lines about the project and
-            we'll follow up with questions and a price.
+            Send a few lines about the project and we&apos;ll follow up with questions,
+            scope and a price.
           </p>
 
           <div className="mt-10 space-y-6">
@@ -47,7 +54,7 @@ export default function ContactPage() {
         </div>
 
         <div className="lg:col-span-3">
-          <ContactForm />
+          <ContactForm template={template} />
         </div>
       </div>
     </section>
