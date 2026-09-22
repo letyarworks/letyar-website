@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import DashboardClient from "@/components/DashboardClient";
 
-export const metadata = { title: "Dashboard — Letyar" };
+export const metadata = {\n  title: "Dashboard — Letyar",\n  robots: { index: false, follow: false },\n};
 
 export default function DashboardPage() {
   return (
