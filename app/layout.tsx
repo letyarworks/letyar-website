@@ -18,9 +18,24 @@ const myanmar = Noto_Sans_Myanmar({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://letyarlabs.com"),
   title: "Letyar Labs — Every build carries a fingerprint",
   description:
     "Letyar (လက်ရာ) is a Yangon-based Web, Software & Product studio. Every build carries a fingerprint.",
+  openGraph: {
+    title: "Letyar Labs — Every build carries a fingerprint",
+    description:
+      "Letyar (လက်ရာ) is a Yangon-based Web, Software & Product studio. Every build carries a fingerprint.",
+    url: "https://letyarlabs.com",
+    siteName: "Letyar Labs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Letyar Labs — Every build carries a fingerprint",
+    description:
+      "Letyar (လက်ရာ) is a Yangon-based Web, Software & Product studio. Every build carries a fingerprint.",
+  },
 };
 
 export default function RootLayout({
@@ -30,10 +45,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${mono.variable} ${myanmar.variable}`}>
-      {/* General Sans + Satoshi are Fontshare-exclusive faces named in
-          TYPOGRAPHY.md — loaded here since next/font/google doesn't carry them.
-          If Fontshare is unreachable in your environment, self-host the two
-          families instead (see README "Fonts"). */}
       <link
         rel="stylesheet"
         href="https://api.fontshare.com/v2/css?f[]=general-sans@600&f[]=satoshi@400,500&display=swap"
