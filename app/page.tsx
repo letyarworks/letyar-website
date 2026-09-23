@@ -154,7 +154,7 @@ export default function Home() {
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           {[
-            { title: "Scope", body: "We define exactly what's being built and what it costs, before any work starts." },
+            { title: "Scope", body: "We define exactly what&apos;s being built and what it costs, before any work starts." },
             { title: "Build", body: "Regular check-ins as the work progresses — no disappearing for weeks at a time." },
             { title: "Ship", body: "Deployed, handed over, and documented — with a clear path for what comes next." },
           ].map((s) => (
@@ -227,7 +227,7 @@ export default function Home() {
               Have a build in mind?
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Tell us what you're building. We'll reply with a scope and a price.
+              Tell us what you&apos;re building. We'll reply with a scope and a price.
             </p>
           </div>
           <Link
