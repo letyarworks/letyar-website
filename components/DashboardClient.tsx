@@ -53,7 +53,7 @@ export default function DashboardClient() {
         <p className="font-mono text-xs uppercase tracking-widest text-slate">Dashboard</p>
         <h1 className="mt-2 font-display text-2xl font-semibold text-paper">No template selected yet</h1>
         <p className="mt-3 font-body text-sm text-mist">
-          Pick a template first, then it'll open here ready to customize.
+          Pick a template first, then it&apos;ll open here ready to customize.
         </p>
         <Link
           href="/templates"
