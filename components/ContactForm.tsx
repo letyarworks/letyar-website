@@ -31,9 +31,6 @@ export default function ContactForm() {
     if (Object.keys(next).length > 0) return;
 
     setStatus("submitting");
-    // No backend is wired up yet — this simulates a send so the flow can be
-    // reviewed end-to-end. Replace with a real POST to your API route or
-    // form service (see README "Wiring the contact form").
     window.setTimeout(() => {
       setStatus("sent");
       form.reset();
@@ -50,7 +47,7 @@ export default function ContactForm() {
         </span>
         <h3 className="font-display text-lg font-semibold text-paper">Message sent.</h3>
         <p className="font-body text-sm text-mist">
-          We'll reply within one business day with next steps.
+          We&apos;ll reply within one business day with next steps.
         </p>
         <button
           type="button"
@@ -69,40 +66,17 @@ export default function ContactForm() {
         <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-slate">
           Your name
         </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="Aung Aung"
-        />
+        <input id="name" name="name" type="text" className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="Aung Aung" />
         {errors.name && <p className="mt-1 font-mono text-xs text-lacquer">{errors.name}</p>}
       </div>
-
       <div>
-        <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="you@business.com"
-        />
+        <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">Email</label>
+        <input id="email" name="email" type="email" className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="you@business.com" />
         {errors.email && <p className="mt-1 font-mono text-xs text-lacquer">{errors.email}</p>}
       </div>
-
       <div>
-        <label htmlFor="budget" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Project type (optional)
-        </label>
-        <select
-          id="budget"
-          name="budget"
-          className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          defaultValue=""
-        >
+        <label htmlFor="budget" className="font-mono text-xs uppercase tracking-wider text-slate">Project type (optional)</label>
+        <select id="budget" name="budget" className="mt-2 w-full border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" defaultValue="">
           <option value="" disabled>Select one</option>
           <option>Website</option>
           <option>Software / dashboard</option>
@@ -110,26 +84,12 @@ export default function ContactForm() {
           <option>Not sure yet</option>
         </select>
       </div>
-
       <div>
-        <label htmlFor="message" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Tell us about the project
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          className="mt-2 w-full resize-none border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="What are you building, and what timeline are you working with?"
-        />
+        <label htmlFor="message" className="font-mono text-xs uppercase tracking-wider text-slate">Tell us about the project</label>
+        <textarea id="message" name="message" rows={5} className="mt-2 w-full resize-none border border-white/15 bg-ink px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="What are you building, and what timeline are you working with?" />
         {errors.message && <p className="mt-1 font-mono text-xs text-lacquer">{errors.message}</p>}
       </div>
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-60"
-      >
+      <button type="submit" disabled={status === "submitting"} className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-60">
         {status === "submitting" ? "Sending…" : "Send message"}
       </button>
     </form>
