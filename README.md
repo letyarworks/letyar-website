@@ -1,148 +1,61 @@
 # Letyar Labs — website
 
-Next.js 14 + Tailwind site for **Letyar (လက်ရာ)**, built against the brand
-rules in [`letyarworks/letyar-brand`](https://github.com/letyarworks/letyar-brand).
-
-## Brand decisions worth knowing about
-
-The brand repo defines **two** color systems and this build had to reconcile them:
-
-1. `assets/` "profile photo set" (the SVGs you supplied) — Ink / Cream /
-   Lacquer, for social media avatars specifically.
-2. `COLORS.md` — the **canonical digital palette** for the actual product/
-   website: Deep Navy, Navy, Electric Cyan, Warm Gold, White, Mist, Slate,
-   plus Lacquer Red as a sparing heritage accent.
-
-This site uses **palette 2** (the official `COLORS.md` tokens) throughout,
-since `COLORS.md` is explicitly the source of truth for digital surfaces.
-The reference mockups you shared use an orange CTA color that isn't in
-either official palette — `COLORS.md` reserves that "Heritage Lacquer" tone
-for cultural context only and names **Electric Cyan as the primary
-functional accent**, so buttons and links use cyan here, not orange. The
-Cream avatar SVG you supplied for on-dark placements *is* used as-is (About
-page, per `README.txt`'s own "→ dark UI" guidance).
-
-`COLORS.md` also says to "keep backgrounds mostly solid; avoid unnecessary
-gradients" — so instead of a gradient hero, the background carries a very
-faint repeated version of the logo mark itself (`.ridge-watermark` in
-`globals.css`). If you'd rather match the mockups' gradient-and-orange look
-exactly instead of the official `COLORS.md` rules, say so and it's a quick
-retint.
+Next.js 14 + Tailwind site for **Letyar (လက်ရာ)**.
 
 ## Stack
 
-- Next.js 14 (App Router) + TypeScript, Tailwind CSS
-- Fonts: General Sans + Satoshi (Fontshare CDN, linked in `app/layout.tsx`
-  — see "Fonts" below), JetBrains Mono + Noto Sans Myanmar (`next/font/google`)
-- No backend yet — content lives in `lib/content.ts`; contact form, login
-  and signup are UI-only (see "Next steps")
+- Next.js 14 App Router + TypeScript + Tailwind CSS
+- Supabase Auth with `@supabase/ssr`
+- Resend-backed contact form
+- Vercel deployment
 
 ## Run locally
+
+Create `.env.local` from `.env.example`, then add the Supabase project URL and publishable key.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+## Authentication
 
-## Fonts
+Login and signup are wired to the **Letyar Labs Supabase project** using cookie-based SSR auth.
 
-`General Sans` and `Satoshi` aren't on Google Fonts, so they're loaded from
-Fontshare's CDN in `app/layout.tsx`. If Fontshare is blocked or slow on your
-network, download the two families from https://www.fontshare.com and use
-`next/font/local` instead — same `font-display` / `font-body` Tailwind
-classes will keep working once the local `@font-face` is wired up.
+- `/signup` creates an email/password account.
+- Signup stores the user's full name and selected template in Auth user metadata.
+- Email confirmation returns through `/auth/callback`.
+- `/login` signs users in with email/password.
+- `/dashboard` requires an authenticated user.
+- `/logout` signs the current user out.
+- `middleware.ts` refreshes Supabase sessions.
 
-## Push to GitHub
+The browser only receives the Supabase publishable key. No service-role key belongs in the repository or browser environment.
 
-```bash
-cd letyar
-git init
-git add .
-git commit -m "Initial commit: Letyar Labs website"
-git branch -M main
-git remote add origin https://github.com/letyarworks/letyar-website.git
-git push -u origin main
+For production, configure these Vercel environment variables:
+
+```text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 ```
 
-## Deploy to Vercel
+Supabase's current Next.js guidance recommends `@supabase/ssr` with cookie-based sessions for App Router applications.
 
-1. https://vercel.com/new
-2. Import the repo — Next.js is auto-detected, no config needed
-3. Deploy
+## Template marketplace
 
-Every push to `main` redeploys automatically.
+The current template flow is:
 
-## Next steps (not wired up yet)
+1. `/templates` — browse templates.
+2. `/templates/[slug]` — select a template.
+3. `/signup?template=<slug>` — create an account and preserve the selected template.
+4. `/dashboard?template=<slug>` — authenticated customization flow.
 
-- **Viber button** (`components/ViberButton.tsx`) links to a placeholder
-  number — real number (`+959669966124`) is already set.
-- **Contact form** (`components/ContactForm.tsx`) simulates a send. Wire it
-  to a real endpoint — an `app/api/contact/route.ts` that emails you, or a
-  service like Formspree/Resend.
-- **Login / signup** are UI only. For real auth, Clerk or NextAuth.js both
-  drop into the App Router with minimal changes to these two pages.
-- **Partner logos** on the homepage marquee are text placeholders — swap
-  `lib/content.ts`'s `partners` array for real logo images once you have
-  permission to display them.
-- **Work page** images are schematic placeholders
-  (`components/WorkPreview.tsx`), consistent with your "make images
-  placeholders" instruction — swap in real project screenshots as case
-  studies are ready.
+The payment step is **not yet a real payment integration**. It is intentionally separate from authentication so real merchant/API verification can be added without pretending that a payment occurred.
 
-## Where things live
+## Contact
 
-- `lib/content.ts` — services, pricing tiers, work items, testimonials, socials
-- `components/RidgeMark.tsx` — the Yun Ridge logo mark (official colors, with a self-drawing hero variant)
-- `tailwind.config.ts` — the eight brand color tokens, straight from `COLORS.md`
-- `app/pricing/page.tsx` — full tiers + comparison table
-- `app/contact/page.tsx` + `components/ContactForm.tsx` — the contact flow
+The contact flow uses the existing Resend configuration. Keep API credentials in Vercel environment variables, never in source control.
 
-## Template marketplace (new)
+## Brand
 
-A full "browse → select → sign up → customize → publish & pay" flow, built
-as a real click-through even though nothing is wired to a backend yet:
-
-1. **`/templates`** and the homepage marquee — 5 templates, each a 9:16
-   portrait placeholder card. Add more any time by adding an entry to the
-   `templates` array in `lib/content.ts`; every page reads from that one
-   array, so nothing else needs to change.
-2. **`/templates/[slug]`** — template detail, "Select this template" links
-   to `/signup?template=<slug>`.
-3. **`/signup`** — shows the selected template, then (on submit) routes to
-   `/dashboard?template=<slug>`. Account creation is simulated — see
-   "Adding auth" below.
-4. **`/dashboard`** — a two-step mock: **Customize** (site name, tagline,
-   accent color, live-ish preview) → **Publish**, which asks for a payment
-   method (KBZPay, Wave Pay, KBZ Bank) and simulates a paid, published site.
-
-### Wiring payments (KBZPay / Wave Pay / KBZ Bank)
-
-`components/DashboardClient.tsx`'s `handlePublish()` currently just waits
-1.1s and shows success — there's no real payment call. To take real money:
-
-- Each provider (KBZPay, Wave Pay, KBZ) requires its own merchant
-  account and API credentials — apply directly with each provider.
-- Payment confirmation has to happen **server-side**: create an
-  `app/api/publish/route.ts` that creates a payment request with the
-  provider's API, and a webhook endpoint that provider calls back to
-  confirm payment before you mark a site as published. Never trust a
-  "payment succeeded" signal from the browser alone.
-- Store the published site's data (owner, template, customizations,
-  payment status) in a real database once this is wired up — right now
-  nothing persists past a page refresh.
-
-### Adding auth
-
-`/login` and `/signup` are UI only — no session is created. Clerk or
-NextAuth.js both work well with the App Router; once wired, replace the
-`window.setTimeout` fake-submit in `components/SignupForm.tsx` with a real
-sign-up call, and protect `/dashboard` so it requires a session.
-
-## Viber button
-
-`components/ViberButton.tsx` now uses the real Viber glyph (not a rough
-approximation) on Viber's own brand purple (`#7360F2`), with an entrance
-animation on page load plus a soft pulse ring. Swap the placeholder number
-in the `href` (`viber://chat?number=...`) for the real one.
+The website uses the Letyar brand assets and the official logomark from the brand repository.
