@@ -2,66 +2,77 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export default function SignupForm({ template }: { template?: string }) {
   const router = useRouter();
+  const supabase = createClient();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // No auth backend yet — this simulates account creation. Wire this to
-    // Clerk/NextAuth (see README "Adding auth") and keep the redirect below.
-    window.setTimeout(() => {
+    setError("");
+    setMessage("");
+
+    const origin = window.location.origin;
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${origin}/auth/callback`,
+        data: {
+          full_name: name,
+          selected_template: template ?? null,
+        },
+      },
+    });
+
+    if (signUpError) {
+      setError(signUpError.message);
+      setLoading(false);
+      return;
+    }
+
+    if (data.session) {
       const q = template ? `?template=${encodeURIComponent(template)}` : "";
       router.push(`/dashboard${q}`);
-    }, 600);
+      router.refresh();
+      return;
+    }
+
+    setMessage("Check your email to confirm your account, then log in.");
+    setLoading(false);
   }
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-5">
       <div>
-        <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Full name
-        </label>
-        <input
-          id="name"
-          type="text"
-          required
-          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="Aung Aung"
-        />
+        <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-slate">Full name</label>
+        <input id="name" name="name" type="text" autoComplete="name" required value={name} onChange={(e) => setName(e.target.value)}
+          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="Aung Aung" />
       </div>
       <div>
-        <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          required
-          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="you@business.com"
-        />
+        <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">Email</label>
+        <input id="email" name="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="you@business.com" />
       </div>
       <div>
-        <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-slate">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          required
-          minLength={8}
-          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-          placeholder="At least 8 characters"
-        />
+        <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-slate">Password</label>
+        <input id="password" name="password" type="password" autoComplete="new-password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)}
+          className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan" placeholder="At least 8 characters" />
       </div>
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-60"
-      >
+
+      {error && <p role="alert" className="border border-lacquer/30 bg-lacquer/10 px-4 py-3 font-body text-sm text-paper">{error}</p>}
+      {message && <p role="status" className="border border-cyan/30 bg-cyan/10 px-4 py-3 font-body text-sm text-paper">{message}</p>}
+
+      <button type="submit" disabled={loading}
+        className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-60">
         {loading ? "Creating account…" : "Create account"}
       </button>
     </form>
