@@ -22,7 +22,7 @@ export default function SignupPage({
 
       <h1 className="font-display text-2xl font-semibold text-paper">Create an account</h1>
       <p className="mt-2 font-body text-sm text-mist">
-        For clients tracking an active project, or building with a template.
+        Create your Letyar account to access your project dashboard.
       </p>
 
       {template && (
@@ -39,13 +39,7 @@ export default function SignupPage({
 
       <p className="mt-6 font-body text-sm text-mist">
         Already have an account?{" "}
-        <Link href="/login" className="text-cyan hover:text-paper">
-          Log in
-        </Link>
-      </p>
-
-      <p className="mt-10 font-mono text-[11px] text-slate">
-        Not wired to real authentication yet — see README &ldquo;Adding auth&rdquo;.
+        <Link href="/login" className="text-cyan hover:text-paper">Log in</Link>
       </p>
     </section>
   );
