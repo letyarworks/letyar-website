@@ -1,9 +1,16 @@
 import Link from "next/link";
 import RidgeMark from "@/components/RidgeMark";
+import LoginForm from "@/components/LoginForm";
 
 export const metadata = { title: "Log in — Letyar" };
 
-export default function LoginPage() {
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: { error?: string };
+}) {
+  const callbackError = searchParams.error === "auth_callback";
+
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-16">
       <Link href="/" className="mb-8 flex items-center gap-2.5">
@@ -16,46 +23,17 @@ export default function LoginPage() {
         Access your project dashboard and files.
       </p>
 
-      <form className="mt-8 space-y-5">
-        <div>
-          <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-            placeholder="you@business.com"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-slate">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            className="mt-2 w-full border border-white/15 bg-navy px-4 py-3 font-body text-sm text-paper outline-none transition focus:border-cyan"
-            placeholder="••••••••"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper"
-        >
-          Log in
-        </button>
-      </form>
+      {callbackError && (
+        <p className="mt-6 border border-lacquer/30 bg-lacquer/10 px-4 py-3 font-body text-sm text-paper">
+          Your email confirmation link could not be completed. Please try again.
+        </p>
+      )}
+
+      <LoginForm />
 
       <p className="mt-6 font-body text-sm text-mist">
         Don&apos;t have an account?{" "}
-        <Link href="/signup" className="text-cyan hover:text-paper">
-          Sign up
-        </Link>
-      </p>
-
-      <p className="mt-10 font-mono text-[11px] text-slate">
-        Not wired to real authentication yet — see README &ldquo;Adding auth&rdquo;.
+        <Link href="/signup" className="text-cyan hover:text-paper">Sign up</Link>
       </p>
     </section>
   );
