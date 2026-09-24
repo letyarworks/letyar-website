@@ -95,10 +95,10 @@ export default function PricingPage() {
       {/* FAQ */}
       <div className="mt-20 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-2">
         <div>
-          <p className="font-body text-sm font-medium text-paper">What if my project doesn't fit a tier?</p>
+          <p className="font-body text-sm font-medium text-paper">What if my project doesn&apos;t fit a tier?</p>
           <p className="mt-1 font-body text-sm text-mist">
             Most Product-tier work is scoped individually. Book a scope call
-            and we'll send a fixed price before anything starts.
+            and we&apos;ll send a fixed price before anything starts.
           </p>
         </div>
         <div>
@@ -127,7 +127,7 @@ export default function PricingPage() {
       <div className="mt-16 flex flex-col items-start justify-between gap-4 border border-white/10 bg-navy p-8 md:flex-row md:items-center">
         <div>
           <h2 className="font-display text-lg font-semibold text-paper">Not sure which tier fits?</h2>
-          <p className="mt-1 font-body text-sm text-mist">Tell us what you're building — we'll recommend one.</p>
+          <p className="mt-1 font-body text-sm text-mist">Tell us what you&apos;re building — we&apos;ll recommend one.</p>
         </div>
         <Link
           href="/contact"

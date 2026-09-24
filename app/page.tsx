@@ -133,7 +133,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          {/* edge fade so cards don't hard-cut at the viewport edge */}
+          {/* edge fade so cards don&apos;t hard-cut at the viewport edge */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-navy to-transparent md:w-16" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-navy to-transparent md:w-16" />
         </div>
@@ -227,7 +227,7 @@ export default function Home() {
               Have a build in mind?
             </h2>
             <p className="mt-2 max-w-md font-body text-sm text-mist">
-              Tell us what you&apos;re building. We'll reply with a scope and a price.
+              Tell us what you&apos;re building. We&apos;ll reply with a scope and a price.
             </p>
           </div>
           <Link

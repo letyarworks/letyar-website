@@ -9,8 +9,8 @@ export default function AboutPage() {
       </h1>
       <p className="mt-6 font-body text-base leading-relaxed text-mist">
         Letyar (လက်ရာ) is a Myanmar word for workmanship — the distinctive
-        mark a craftsperson leaves on something they built by hand. That's
-        the standard this studio holds its work to, whether it's a five-page
+        mark a craftsperson leaves on something they built by hand. That&apos;s
+        the standard this studio holds its work to, whether it&apos;s a five-page
         site or a full product build.
       </p>
       <p className="mt-4 font-body text-base leading-relaxed text-mist">
