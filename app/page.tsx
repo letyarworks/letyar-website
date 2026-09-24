@@ -71,7 +71,7 @@ export default function Home() {
             <div className="flex w-max animate-marquee gap-16">
               {[...partners, ...partners].map((p, i) => (
                 <span key={i} className="font-display text-lg text-slate/70 whitespace-nowrap">
-                  {p}
+                  {p.name}
                 </span>
               ))}
             </div>
