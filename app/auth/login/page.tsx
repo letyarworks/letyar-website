@@ -13,7 +13,7 @@ export default function LoginPage() {
         <p className="text-slate-400 mb-8">Access your Letyar dashboard</p>
         <LoginForm />
         <p className="text-center text-slate-400 mt-6">
-          Don't have account? <Link href="/auth/signup" className="text-cyan-400">Create one</Link>
+          Don&apos;t have account? <Link href="/auth/signup" className="text-cyan-400">Create one</Link>
         </p>
       </div>
     </div>

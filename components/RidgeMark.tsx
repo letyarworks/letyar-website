@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function RidgeMark({
   size = 32,
   animated = false,
@@ -8,7 +10,7 @@ export default function RidgeMark({
   className?: string;
 }) {
   return (
-    <img
+    <Image
       src="/brand/logo/logo.svg"
       width={size}
       height={size}
