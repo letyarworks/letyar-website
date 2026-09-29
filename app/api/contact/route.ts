@@ -44,21 +44,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const text = [
-      "New enquiry from letyarlabs.com",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Business / project: ${businessType || "Not specified"}`,
-      `Project type: ${projectType || "Not specified"}`,
-      `Budget range: ${budget || "Not specified"}`,
-      `Target timeline: ${timeline || "Flexible"}`,
-      `Template requested: ${template || "None"}`,
-      "",
-      "Project details:",
-      message,
-    ].join("\n");
-
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -69,8 +54,18 @@ export async function POST(request: Request) {
         from,
         to: [to],
         reply_to: email,
-        subject: `${template ? `Template request — ${template} — ` : "New Letyar Labs enquiry — "}${name}`,
-        text,
+        template: {
+          id: "a93cf83a-a1bb-4290-8685-969c154f7b2d",
+          variables: {
+            NAME: name,
+            BUSINESS: businessType || "Not specified",
+            PROJECT_TYPE: projectType || "Not specified",
+            BUDGET: budget || "Not specified",
+            TIMELINE: timeline || "Flexible",
+            TEMPLATE: template || "None",
+            MESSAGE: message,
+          },
+        },
       }),
     });
 
