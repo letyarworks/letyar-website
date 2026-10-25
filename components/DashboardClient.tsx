@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getTemplate, formatMMK } from "@/lib/content";
@@ -35,7 +35,7 @@ export default function DashboardClient() {
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState("");
   const [saveError, setSaveError] = useState("");
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   const siteSlug = siteName.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "your-site";
 
