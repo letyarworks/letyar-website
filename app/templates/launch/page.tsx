@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { launchTemplateDefaults } from "@/lib/templates/launch";
+import { formatMMK, getTemplate } from "@/lib/content";
 
 export const metadata = {
   title: "Launch — Letyar Template Preview",
@@ -113,12 +114,17 @@ export default function LaunchTemplate() {
         <div className="mx-auto flex max-w-6xl flex-col gap-7 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7bd3d5]">Ready when you are</p>
-            <h2 className="mt-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-5xl">Let’s build your next step.</h2>
-            <p className="mt-4 max-w-lg text-sm leading-6 text-white/60">This is a working design preview. Contact Letyar to customize this template for your business.</p>
+            <h2 className="mt-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-5xl">Make this template yours.</h2>
+            <p className="mt-4 max-w-lg text-sm leading-6 text-white/60">Choose Launch to continue to account creation. You can then access your dashboard and follow the available setup steps.</p>
           </div>
-          <Link href="/contact" className="inline-flex w-fit rounded-full bg-[#7bd3d5] px-6 py-3.5 text-sm font-semibold text-[#172126] transition hover:bg-white">
-            Contact Letyar ↗
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href={getTemplate("launch") ? "/signup?template=launch" : "/templates"} className="inline-flex w-fit rounded-full bg-[#7bd3d5] px-6 py-3.5 text-sm font-semibold text-[#172126] transition hover:bg-white">
+              Select Launch · {formatMMK(getTemplate("launch")?.price ?? 30000)} ↗
+            </Link>
+            <Link href="/contact" className="inline-flex w-fit rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white">
+              Ask a question
+            </Link>
+          </div>
         </div>
       </section>
 
