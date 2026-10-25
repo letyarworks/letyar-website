@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { getTemplate } from "@/lib/content";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function LoginForm() {
     setLoading(true);
     setError("");
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -29,7 +30,11 @@ export default function LoginForm() {
       return;
     }
 
-    router.push("/dashboard");
+    const selectedTemplate = data.user.user_metadata?.selected_template;
+    const destination = typeof selectedTemplate === "string" && getTemplate(selectedTemplate)
+      ? `/dashboard?template=${encodeURIComponent(selectedTemplate)}`
+      : "/dashboard";
+    router.push(destination);
     router.refresh();
   }
 

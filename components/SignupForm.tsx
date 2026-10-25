@@ -25,7 +25,7 @@ export default function SignupForm({ template }: { template?: string }) {
       email,
       password,
       options: {
-        emailRedirectTo: `${origin}/auth/callback`,
+        emailRedirectTo: `${origin}/auth/callback?next=${encodeURIComponent(template ? `/dashboard?template=${encodeURIComponent(template)}` : "/dashboard")}`,
         data: {
           full_name: name,
           selected_template: template ?? null,
