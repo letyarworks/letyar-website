@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getTemplate, formatMMK } from "@/lib/content";
+import { createClient } from "@/lib/supabase/client";
 
 const accents = [
   { name: "Cyan", hex: "#19D3E6" },
@@ -13,7 +14,7 @@ const accents = [
 ];
 
 const paymentMethods = [
-  { key: "kbzpay", name: "KBZPay", note: "Auto-verified via API" },
+  { key: "kbzpay", name: "KBZPay", note: "Online payment integration pending" },
   { key: "wavepay", name: "Wave Pay", note: "Auto-verified via API" },
   { key: "kbzbank", name: "KBZ Bank", note: "Auto-verified via API" },
 ];
@@ -31,20 +32,71 @@ export default function DashboardClient() {
   const [accent, setAccent] = useState(accents[0].hex);
   const [method, setMethod] = useState<string | null>(null);
   const [paying, setPaying] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [saveError, setSaveError] = useState("");
+  const supabase = createClient();
 
   const siteSlug = siteName.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "your-site";
 
-  function handlePublish() {
+  async function saveDraft() {
+    if (!template) return false;
+    setSaving(true);
+    setSaveError("");
+    setNotice("");
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      setSaveError("Please log in again before saving your template.");
+      setSaving(false);
+      return false;
+    }
+    const { error } = await supabase.from("customer_sites").upsert({
+      user_id: user.id,
+      template_slug: template.slug,
+      site_name: siteName.trim() || "My Business",
+      tagline: tagline.trim(),
+      accent_color: accent,
+      status: "draft",
+    }, { onConflict: "user_id,template_slug" });
+    setSaving(false);
+    if (error) {
+      setSaveError(error.message.includes("customer_sites")
+        ? "Draft storage is not ready yet. The database migration must be applied first."
+        : "Could not save your draft. Please try again.");
+      return false;
+    }
+    setNotice("Draft saved to your account.");
+    return true;
+  }
+
+  useEffect(() => {
+    let active = true;
+    async function loadDraft() {
+      if (!template) return;
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!active || !user) return;
+      const { data, error } = await supabase.from("customer_sites")
+        .select("site_name, tagline, accent_color")
+        .eq("user_id", user.id)
+        .eq("template_slug", template.slug)
+        .maybeSingle();
+      if (!active || error || !data) return;
+      setSiteName(data.site_name);
+      setTagline(data.tagline);
+      setAccent(data.accent_color);
+    }
+    void loadDraft();
+    return () => { active = false; };
+  }, [template?.slug]);
+
+  async function handlePublish() {
     if (!method) return;
     setPaying(true);
-    // No payment backend yet — this simulates a KBZPay / Wave Pay / KBZ
-    // Bank confirmation. Wiring a real one needs merchant accounts with
-    // each provider and a server route that verifies the callback/webhook
-    // before marking the site as published. See README "Wiring payments".
-    window.setTimeout(() => {
-      setPaying(false);
-      setStep("success");
-    }, 1100);
+    const saved = await saveDraft();
+    setPaying(false);
+    if (saved) {
+      setNotice("Draft saved. Online payment and automatic publishing are not connected yet; no payment was taken and your site is not live.");
+    }
   }
 
   if (!template) {
@@ -143,11 +195,21 @@ export default function DashboardClient() {
             </div>
             <button
               type="button"
+              onClick={() => void saveDraft()}
+              disabled={saving}
+              className="w-full rounded-sm border border-cyan px-6 py-3 font-mono text-sm font-medium text-cyan transition hover:bg-cyan hover:text-ink disabled:opacity-50"
+            >
+              {saving ? "Saving draft…" : "Save draft"}
+            </button>
+            <button
+              type="button"
               onClick={() => setStep("publish")}
               className="w-full rounded-sm bg-cyan px-6 py-3 font-mono text-sm font-medium text-ink transition hover:bg-paper"
             >
               Continue to publish
             </button>
+            {notice && <p role="status" className="text-sm text-cyan">{notice}</p>}
+            {saveError && <p role="alert" className="text-sm text-lacquer">{saveError}</p>}
           </div>
 
           {/* live-ish preview */}
@@ -165,7 +227,10 @@ export default function DashboardClient() {
       {step === "publish" && (
         <div className="mt-10 max-w-md">
           <p className="font-body text-sm text-mist">
-            Publishing <strong className="text-paper">{siteName}</strong> — {formatMMK(template.price)}, one-time.
+            Draft: <strong className="text-paper">{siteName}</strong> — {formatMMK(template.price)}, one-time.
+          </p>
+          <p className="mt-3 border border-white/15 px-4 py-3 text-sm text-mist">
+            Payment verification and automatic website publishing are not connected yet. This step will only save your draft; it will not charge you or publish a live website.
           </p>
 
           <div className="mt-6 space-y-3">
