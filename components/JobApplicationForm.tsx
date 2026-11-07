@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
-
 const inputClass = "mt-2 w-full rounded-xl border border-white/15 bg-[#101B33] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-cyan focus:outline-none";
 const labelClass = "block text-sm font-medium text-white";
 const sectionClass = "rounded-2xl border border-white/10 bg-[#101B33]/80 p-5 sm:p-7";
@@ -86,7 +84,6 @@ export default function JobApplicationForm() {
         <Field label="လက်ရှိကျွမ်းကျင်မှု" required><Choice name="skill" options={["ကျွမ်းကျင်","အလယ်အလတ်","အခြေခံ","အတွေ့အကြုံမရှိ"]} value={skill} onChange={setSkill}/></Field>
         <Field label="လုပ်ငန်းအတွေ့အကြုံ"><textarea value={experience} onChange={e=>setExperience(e.target.value)} maxLength={1500} rows={3} className={inputClass} placeholder="ယခင်လုပ်ကိုင်ခဲ့သည့်နေရာ၊ လုပ်သက်၊ ကျွမ်းကျင်သည့်အလုပ်များ"/></Field>
         <Field label="အသုံးပြုဖူးသည့် စက်အမျိုးအစား"><input name="machine_skills" maxLength={300} className={inputClass} placeholder="ဥပမာ - ပိတ်ဖြတ်စက်၊ Overlock၊ Single Needle"/></Field>
-        <Field label="လက်တွေ့စမ်းသပ်မှုအတွက် အဆင်ပြေပါသလား"><Choice name="test_ok" options={["အဆင်ပြေသည်","ဆွေးနွေးလိုသည်"]} value={schedule === "အချိန်ပြည့်" ? "အဆင်ပြေသည်" : "ဆွေးနွေးလိုသည်"} onChange={v=>setSchedule(v === "အဆင်ပြေသည်" ? "အချိန်ပြည့်" : "အချိန်ပိုင်း")}/></Field>
       </div>
     </section>
 
