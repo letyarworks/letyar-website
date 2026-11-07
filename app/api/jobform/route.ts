@@ -33,8 +33,9 @@ export async function POST(request: Request) {
     const phone = clean(form.get("phone"), 30);
     const address = clean(form.get("address"), 500);
     const position = clean(form.get("position"), 80);
+    const gender = clean(form.get("gender"), 40);
     const consent = clean(form.get("consent"), 10);
-    if (!fullName || !phone || !address || !position || consent !== "yes" || !Number.isInteger(age) || age < 18 || age > 65) {
+    if (!fullName || !phone || !address || !position || !gender || consent !== "yes" || !Number.isInteger(age) || age < 18 || age > 65) {
       return NextResponse.json({ ok: false, error: "မဖြစ်မနေဖြည့်ရန် အချက်အလက်များကို စစ်ဆေးပါ။ အသက် ၁၈ နှစ်နှင့်အထက် ဖြစ်ရပါမည်။" }, { status: 400 });
     }
     const id = randomUUID();
@@ -54,7 +55,7 @@ export async function POST(request: Request) {
     }
     const record = {
       id, full_name: fullName, age, phone, alternate_phone: clean(form.get("alternate_phone"), 30),
-      address, gender: clean(form.get("gender"), 40), marital_status: clean(form.get("marital"), 40),
+      address, gender, marital_status: clean(form.get("marital"), 40),
       position, skill_level: clean(form.get("skill"), 40), experience: clean(form.get("experience"), 1500),
       machine_skills: clean(form.get("machine_skills"), 300), accommodation: clean(form.get("stay"), 60),
       work_schedule: clean(form.get("schedule"), 40), available_date: clean(form.get("available_date"), 20) || null,
