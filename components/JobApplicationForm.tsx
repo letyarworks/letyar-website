@@ -29,6 +29,7 @@ export default function JobApplicationForm() {
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
+    if (!gender) return setError("ကျား / မ အချက်အလက်ကို ရွေးချယ်ပါ။");
     if (!consent) return setError("ကိုယ်ရေးအချက်အလက်အသုံးပြုမှုနှင့် စည်းကမ်းချက်များကို သဘောတူရန် လိုအပ်ပါသည်။");
     const form = new FormData(event.currentTarget);
     form.set("gender", gender);
