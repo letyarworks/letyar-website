@@ -107,3 +107,27 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Could not load applications." }, { status: 500 });
   }
 }
+
+
+export async function PATCH(request: Request) {
+  const auth = request.headers.get("authorization");
+  const token = auth?.startsWith("Bearer ") ? auth.slice(7) : "";
+  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  try {
+    const supabase = adminClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+    if (authError || !user?.email || user.email.toLowerCase() !== (process.env.JOBFORM_ADMIN_EMAIL || "").toLowerCase()) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+    const body = await request.json();
+    const id = typeof body.id === "string" ? body.id : "";
+    const status = typeof body.status === "string" ? body.status : "";
+    const allowed = ["pending", "reviewed", "interview", "accepted", "rejected", "withdrawn"];
+    if (!id || !allowed.includes(status)) return NextResponse.json({ error: "Invalid application status." }, { status: 400 });
+    const { error } = await supabase.from("job_applications").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
+    if (error) throw error;
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json({ error: "Could not update application." }, { status: 500 });
+  }
+}
